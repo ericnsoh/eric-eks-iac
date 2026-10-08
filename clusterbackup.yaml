@@ -237,13 +237,15 @@ items:
 - apiVersion: v1
   kind: Pod
   metadata:
-    creationTimestamp: "2026-10-07T22:07:34Z"
+    creationTimestamp: "2026-10-08T07:50:03Z"
     generateName: bmi-api-7595f6db74-
     generation: 1
     labels:
       app.kubernetes.io/name: bmi-api
       pod-template-hash: 7595f6db74
-    name: bmi-api-7595f6db74-w4pj5
+      topology.kubernetes.io/region: us-east-2
+      topology.kubernetes.io/zone: us-east-2a
+    name: bmi-api-7595f6db74-jfzq9
     namespace: bmi-api
     ownerReferences:
     - apiVersion: apps/v1
@@ -252,8 +254,8 @@ items:
       kind: ReplicaSet
       name: bmi-api-7595f6db74
       uid: 640c830d-2530-4044-9ad2-27e55e0f1f3d
-    resourceVersion: "1060744"
-    uid: f1508897-69c6-4530-a576-1067d057fe28
+    resourceVersion: "1111213"
+    uid: 83fecc3f-fa5b-46f4-99af-e74f87461efa
   spec:
     containers:
     - env:
@@ -348,14 +350,14 @@ items:
       - mountPath: /tmp
         name: tmp
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-qvm2b
+        name: kube-api-access-dcb2z
         readOnly: true
       - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
         name: aws-iam-token
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: true
-    nodeName: ip-10-0-2-44.us-east-2.compute.internal
+    nodeName: ip-10-0-1-192.us-east-2.compute.internal
     preemptionPolicy: PreemptLowerPriority
     priority: 0
     restartPolicy: Always
@@ -396,7 +398,7 @@ items:
             path: token
     - emptyDir: {}
       name: tmp
-    - name: kube-api-access-qvm2b
+    - name: kube-api-access-dcb2z
       projected:
         defaultMode: 420
         sources:
@@ -417,27 +419,27 @@ items:
   status:
     conditions:
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:18Z"
+      lastTransitionTime: "2026-10-08T07:50:03Z"
       status: "True"
       type: PodReadyToStartContainers
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
+      lastTransitionTime: "2026-10-08T07:50:03Z"
       status: "True"
       type: Initialized
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:39Z"
+      lastTransitionTime: "2026-10-08T07:50:12Z"
       status: "True"
       type: Ready
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:39Z"
+      lastTransitionTime: "2026-10-08T07:50:12Z"
       status: "True"
       type: ContainersReady
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
+      lastTransitionTime: "2026-10-08T07:50:03Z"
       status: "True"
       type: PodScheduled
     containerStatuses:
-    - containerID: containerd://d0730f7f398fe8a0cf01dc4ca9531b5db6559da4ef9ecc7c678d55214c9f45c1
+    - containerID: containerd://d079e354d273488d7e536a20e6fd0d7d3805fbbf1a80c9f2a6371c0255bf0456
       image: sha256:45818ccb6fff834522fbb88d9caf54c0ac2b1abda0f9774411aec0d17097fba2
       imageID: 124666675812.dkr.ecr.us-east-2.amazonaws.com/bmi-health-check-api@sha256:a34cc9533fa44907333c0a65ec2883916e97981289c5455da583740a4e5a6d8c
       lastState: {}
@@ -447,27 +449,27 @@ items:
       started: true
       state:
         running:
-          startedAt: "2026-10-08T04:26:24Z"
+          startedAt: "2026-10-08T07:50:07Z"
       volumeMounts:
       - mountPath: /tmp
         name: tmp
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-qvm2b
+        name: kube-api-access-dcb2z
         readOnly: true
         recursiveReadOnly: Disabled
       - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
         name: aws-iam-token
         readOnly: true
         recursiveReadOnly: Disabled
-    hostIP: 10.0.2.44
+    hostIP: 10.0.1.192
     hostIPs:
-    - ip: 10.0.2.44
+    - ip: 10.0.1.192
     phase: Running
-    podIP: 10.0.2.45
+    podIP: 10.0.1.119
     podIPs:
-    - ip: 10.0.2.45
+    - ip: 10.0.1.119
     qosClass: Burstable
-    startTime: "2026-10-08T04:26:17Z"
+    startTime: "2026-10-08T07:50:03Z"
 - apiVersion: v1
   kind: Pod
   metadata:
@@ -488,7 +490,7 @@ items:
       kind: StatefulSet
       name: bmi-db
       uid: 8c44ba51-081d-4b86-8e1c-97451bea6bdb
-    resourceVersion: "1061383"
+    resourceVersion: "1095935"
     uid: a9ad4167-96a0-4724-9180-88eb10946bc5
   spec:
     containers:
@@ -545,6 +547,7 @@ items:
     dnsPolicy: ClusterFirst
     enableServiceLinks: true
     hostname: bmi-db-0
+    nodeName: ip-10-0-3-65.us-east-2.compute.internal
     preemptionPolicy: PreemptLowerPriority
     priority: 0
     restartPolicy: Always
@@ -589,16 +592,86 @@ items:
   status:
     conditions:
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-07T22:07:44Z"
-      message: '0/3 nodes are available: 1 Too many pods, 2 node(s) didn''t match
-        PersistentVolume''s node affinity. preemption: 0/3 nodes are available: 1
-        No preemption victims found for incoming pod, 2 Preemption is not helpful
-        for scheduling.'
-      reason: Unschedulable
-      status: "False"
+      lastTransitionTime: "2026-10-08T06:56:59Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T06:56:52Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T06:57:16Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T06:57:16Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T06:56:52Z"
+      observedGeneration: 1
+      status: "True"
       type: PodScheduled
-    phase: Pending
+    containerStatuses:
+    - allocatedResources:
+        cpu: 50m
+        memory: 128Mi
+      containerID: containerd://7b37ae58352c6816f6a8972e434c85ed9a999bebb3f44185a72bca0e534343c3
+      image: public.ecr.aws/docker/library/postgres:17-alpine
+      imageID: public.ecr.aws/docker/library/postgres@sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24
+      lastState: {}
+      name: postgres
+      ready: true
+      resources:
+        limits:
+          cpu: 500m
+          memory: 384Mi
+        requests:
+          cpu: 50m
+          memory: 128Mi
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T06:57:04Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 6
+          - 10
+          - 11
+          - 20
+          - 26
+          - 27
+          - 999
+          uid: 0
+      volumeMounts:
+      - mountPath: /var/lib/postgresql/data
+        name: data
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-wmvzc
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.0.3.65
+    hostIPs:
+    - ip: 10.0.3.65
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.0.3.232
+    podIPs:
+    - ip: 10.0.3.232
     qosClass: Burstable
+    startTime: "2026-10-08T06:56:52Z"
 - apiVersion: v1
   kind: Pod
   metadata:
@@ -606,7 +679,7 @@ items:
       prometheus.io/path: /metrics
       prometheus.io/port: "9402"
       prometheus.io/scrape: "true"
-    creationTimestamp: "2026-10-07T22:07:43Z"
+    creationTimestamp: "2026-10-08T07:41:49Z"
     generateName: cert-manager-5c66ff4789-
     generation: 1
     labels:
@@ -618,7 +691,9 @@ items:
       app.kubernetes.io/version: v1.15.1
       helm.sh/chart: cert-manager-v1.15.1
       pod-template-hash: 5c66ff4789
-    name: cert-manager-5c66ff4789-w552j
+      topology.kubernetes.io/region: us-east-2
+      topology.kubernetes.io/zone: us-east-2a
+    name: cert-manager-5c66ff4789-z8w6s
     namespace: cert-manager
     ownerReferences:
     - apiVersion: apps/v1
@@ -627,8 +702,8 @@ items:
       kind: ReplicaSet
       name: cert-manager-5c66ff4789
       uid: e7a4bd9d-5351-4773-a980-ff730972efb5
-    resourceVersion: "1060837"
-    uid: 1e92766c-7708-41aa-8ca9-543015e87aec
+    resourceVersion: "1108670"
+    uid: 2cf4925e-e706-4909-b42a-df1d408b2bbb
   spec:
     containers:
     - args:
@@ -674,11 +749,11 @@ items:
       terminationMessagePolicy: File
       volumeMounts:
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-664h7
+        name: kube-api-access-fvp22
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: false
-    nodeName: ip-10-0-2-44.us-east-2.compute.internal
+    nodeName: ip-10-0-1-192.us-east-2.compute.internal
     nodeSelector:
       kubernetes.io/os: linux
     preemptionPolicy: PreemptLowerPriority
@@ -702,7 +777,7 @@ items:
       operator: Exists
       tolerationSeconds: 300
     volumes:
-    - name: kube-api-access-664h7
+    - name: kube-api-access-fvp22
       projected:
         defaultMode: 420
         sources:
@@ -723,27 +798,27 @@ items:
   status:
     conditions:
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:46Z"
+      lastTransitionTime: "2026-10-08T07:41:50Z"
       status: "True"
       type: PodReadyToStartContainers
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
+      lastTransitionTime: "2026-10-08T07:41:49Z"
       status: "True"
       type: Initialized
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:49Z"
+      lastTransitionTime: "2026-10-08T07:41:52Z"
       status: "True"
       type: Ready
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:49Z"
+      lastTransitionTime: "2026-10-08T07:41:52Z"
       status: "True"
       type: ContainersReady
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
+      lastTransitionTime: "2026-10-08T07:41:49Z"
       status: "True"
       type: PodScheduled
     containerStatuses:
-    - containerID: containerd://2a302cf6cf2ce3fde0716dbc0867445d1a23ef4d59f48c9f5956905d80ba9f03
+    - containerID: containerd://bd7c7321f4efdc851fa2d8a37afe581eb83361e6c28f2c37460bf7c7cb59ed55
       image: quay.io/jetstack/cert-manager-controller:v1.15.1
       imageID: quay.io/jetstack/cert-manager-controller@sha256:057ace5734b53ebdec20b3a0d182c37c9ef0014e9f6364f9b99018e76936e984
       lastState: {}
@@ -753,25 +828,25 @@ items:
       started: true
       state:
         running:
-          startedAt: "2026-10-08T04:26:48Z"
+          startedAt: "2026-10-08T07:41:51Z"
       volumeMounts:
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-664h7
+        name: kube-api-access-fvp22
         readOnly: true
         recursiveReadOnly: Disabled
-    hostIP: 10.0.2.44
+    hostIP: 10.0.1.192
     hostIPs:
-    - ip: 10.0.2.44
+    - ip: 10.0.1.192
     phase: Running
-    podIP: 10.0.2.11
+    podIP: 10.0.1.41
     podIPs:
-    - ip: 10.0.2.11
+    - ip: 10.0.1.41
     qosClass: BestEffort
-    startTime: "2026-10-08T04:26:17Z"
+    startTime: "2026-10-08T07:41:49Z"
 - apiVersion: v1
   kind: Pod
   metadata:
-    creationTimestamp: "2026-10-07T22:07:34Z"
+    creationTimestamp: "2026-10-08T07:53:08Z"
     generateName: cert-manager-cainjector-7f47fb946-
     generation: 1
     labels:
@@ -783,7 +858,9 @@ items:
       app.kubernetes.io/version: v1.15.1
       helm.sh/chart: cert-manager-v1.15.1
       pod-template-hash: 7f47fb946
-    name: cert-manager-cainjector-7f47fb946-qwx9z
+      topology.kubernetes.io/region: us-east-2
+      topology.kubernetes.io/zone: us-east-2c
+    name: cert-manager-cainjector-7f47fb946-f2xb8
     namespace: cert-manager
     ownerReferences:
     - apiVersion: apps/v1
@@ -792,8 +869,8 @@ items:
       kind: ReplicaSet
       name: cert-manager-cainjector-7f47fb946
       uid: 66cb9364-2eed-4e07-a68c-27bfd673fe24
-    resourceVersion: "1060697"
-    uid: 4fe5703c-5918-4c41-a7c9-7e0917b45a93
+    resourceVersion: "1112121"
+    uid: 88912dff-f8d1-4d4d-bb58-485d94d8080d
   spec:
     containers:
     - args:
@@ -819,11 +896,11 @@ items:
       terminationMessagePolicy: File
       volumeMounts:
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-hz8hq
+        name: kube-api-access-6ct7g
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: false
-    nodeName: ip-10-0-2-44.us-east-2.compute.internal
+    nodeName: ip-10-0-3-65.us-east-2.compute.internal
     nodeSelector:
       kubernetes.io/os: linux
     preemptionPolicy: PreemptLowerPriority
@@ -847,7 +924,7 @@ items:
       operator: Exists
       tolerationSeconds: 300
     volumes:
-    - name: kube-api-access-hz8hq
+    - name: kube-api-access-6ct7g
       projected:
         defaultMode: 420
         sources:
@@ -868,51 +945,64 @@ items:
   status:
     conditions:
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:30Z"
+      lastTransitionTime: "2026-10-08T07:53:10Z"
+      observedGeneration: 1
       status: "True"
       type: PodReadyToStartContainers
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
+      lastTransitionTime: "2026-10-08T07:53:08Z"
+      observedGeneration: 1
       status: "True"
       type: Initialized
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:32Z"
+      lastTransitionTime: "2026-10-08T07:53:12Z"
+      observedGeneration: 1
       status: "True"
       type: Ready
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:32Z"
+      lastTransitionTime: "2026-10-08T07:53:12Z"
+      observedGeneration: 1
       status: "True"
       type: ContainersReady
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
+      lastTransitionTime: "2026-10-08T07:53:08Z"
+      observedGeneration: 1
       status: "True"
       type: PodScheduled
     containerStatuses:
-    - containerID: containerd://d592939a5860f5cd346d1da03966c5ee236f90d1dc13911ec557d08e4735061d
+    - containerID: containerd://6a83bfe28c8fa2f7cfc9b125e3c3ba72267cd19c82b6fec1137dd4c3727e2e31
       image: quay.io/jetstack/cert-manager-cainjector:v1.15.1
       imageID: quay.io/jetstack/cert-manager-cainjector@sha256:b92862b0fdeea5cc9ebcbdd77d604cb17091c66f101cfcbb340a9e21b0d2c687
       lastState: {}
       name: cert-manager-cainjector
       ready: true
+      resources: {}
       restartCount: 0
       started: true
       state:
         running:
-          startedAt: "2026-10-08T04:26:32Z"
+          startedAt: "2026-10-08T07:53:11Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          uid: 1000
       volumeMounts:
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-hz8hq
+        name: kube-api-access-6ct7g
         readOnly: true
         recursiveReadOnly: Disabled
-    hostIP: 10.0.2.44
+    hostIP: 10.0.3.65
     hostIPs:
-    - ip: 10.0.2.44
+    - ip: 10.0.3.65
+    observedGeneration: 1
     phase: Running
-    podIP: 10.0.2.124
+    podIP: 10.0.3.20
     podIPs:
-    - ip: 10.0.2.124
+    - ip: 10.0.3.20
     qosClass: BestEffort
-    startTime: "2026-10-08T04:26:17Z"
+    startTime: "2026-10-08T07:53:08Z"
 - apiVersion: v1
   kind: Pod
   metadata:
@@ -1503,416 +1593,6 @@ items:
 - apiVersion: v1
   kind: Pod
   metadata:
-    creationTimestamp: "2026-10-08T04:26:07Z"
-    generateName: aws-node-
-    generation: 1
-    labels:
-      app.kubernetes.io/instance: aws-vpc-cni
-      app.kubernetes.io/name: aws-node
-      controller-revision-hash: 84547c547
-      k8s-app: aws-node
-      pod-template-generation: "1"
-    name: aws-node-jxsw5
-    namespace: kube-system
-    ownerReferences:
-    - apiVersion: apps/v1
-      blockOwnerDeletion: true
-      controller: true
-      kind: DaemonSet
-      name: aws-node
-      uid: 7d5ac1f8-f1d4-4063-b412-573ca0d07037
-    resourceVersion: "1060593"
-    uid: d1e1bc1f-c873-4f63-8c3b-0b8d5ca96fde
-  spec:
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchFields:
-            - key: metadata.name
-              operator: In
-              values:
-              - ip-10-0-2-44.us-east-2.compute.internal
-    containers:
-    - env:
-      - name: ADDITIONAL_ENI_TAGS
-        value: '{}'
-      - name: ANNOTATE_POD_IP
-        value: "false"
-      - name: AWS_VPC_CNI_NODE_PORT_SUPPORT
-        value: "true"
-      - name: AWS_VPC_ENI_MTU
-        value: "9001"
-      - name: AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG
-        value: "false"
-      - name: AWS_VPC_K8S_CNI_EXTERNALSNAT
-        value: "false"
-      - name: AWS_VPC_K8S_CNI_LOGLEVEL
-        value: DEBUG
-      - name: AWS_VPC_K8S_CNI_LOG_FILE
-        value: /host/var/log/aws-routed-eni/ipamd.log
-      - name: AWS_VPC_K8S_CNI_RANDOMIZESNAT
-        value: prng
-      - name: AWS_VPC_K8S_CNI_VETHPREFIX
-        value: eni
-      - name: AWS_VPC_K8S_PLUGIN_LOG_FILE
-        value: /var/log/aws-routed-eni/plugin.log
-      - name: AWS_VPC_K8S_PLUGIN_LOG_LEVEL
-        value: DEBUG
-      - name: CLUSTER_NAME
-        value: etechapp-eks-25kmRfC1
-      - name: DISABLE_INTROSPECTION
-        value: "false"
-      - name: DISABLE_METRICS
-        value: "false"
-      - name: DISABLE_NETWORK_RESOURCE_PROVISIONING
-        value: "false"
-      - name: ENABLE_IMDS_ONLY_MODE
-        value: "false"
-      - name: ENABLE_IPv4
-        value: "true"
-      - name: ENABLE_IPv6
-        value: "false"
-      - name: ENABLE_MULTI_NIC
-        value: "false"
-      - name: ENABLE_POD_ENI
-        value: "false"
-      - name: ENABLE_PREFIX_DELEGATION
-        value: "false"
-      - name: ENABLE_SUBNET_DISCOVERY
-        value: "true"
-      - name: NETWORK_POLICY_ENFORCING_MODE
-        value: standard
-      - name: VPC_CNI_VERSION
-        value: v1.22.4
-      - name: VPC_ID
-        value: vpc-0c480028c9567008a
-      - name: WARM_ENI_TARGET
-        value: "1"
-      - name: WARM_PREFIX_TARGET
-        value: "1"
-      - name: MY_NODE_NAME
-        valueFrom:
-          fieldRef:
-            apiVersion: v1
-            fieldPath: spec.nodeName
-      - name: MY_POD_NAME
-        valueFrom:
-          fieldRef:
-            apiVersion: v1
-            fieldPath: metadata.name
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni:v1.22.4-eksbuild.3
-      imagePullPolicy: IfNotPresent
-      livenessProbe:
-        exec:
-          command:
-          - /app/grpc-health-probe
-          - -addr=:50051
-          - -connect-timeout=5s
-          - -rpc-timeout=5s
-        failureThreshold: 3
-        initialDelaySeconds: 60
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 10
-      name: aws-node
-      ports:
-      - containerPort: 61678
-        hostPort: 61678
-        name: metrics
-        protocol: TCP
-      readinessProbe:
-        exec:
-          command:
-          - /app/grpc-health-probe
-          - -addr=:50051
-          - -connect-timeout=5s
-          - -rpc-timeout=5s
-        failureThreshold: 3
-        initialDelaySeconds: 1
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 10
-      resources:
-        requests:
-          cpu: 25m
-      securityContext:
-        capabilities:
-          add:
-          - NET_ADMIN
-          - NET_RAW
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: File
-      volumeMounts:
-      - mountPath: /host/opt/cni/bin
-        name: cni-bin-dir
-      - mountPath: /host/etc/cni/net.d
-        name: cni-net-dir
-      - mountPath: /host/var/log/aws-routed-eni
-        name: log-dir
-      - mountPath: /var/run/aws-node
-        name: run-dir
-      - mountPath: /run/xtables.lock
-        name: xtables-lock
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-mdmqx
-        readOnly: true
-    - args:
-      - --enable-ipv6=false
-      - --enable-network-policy=false
-      - --enable-cloudwatch-logs=false
-      - --enable-policy-event-logs=false
-      - --log-file=/var/log/aws-routed-eni/network-policy-agent.log
-      - --metrics-bind-addr=:8162
-      - --health-probe-bind-addr=:8163
-      - --conntrack-cache-cleanup-period=300
-      - --conntrack-cache-table-size=524288
-      - --log-level=debug
-      env:
-      - name: MY_NODE_NAME
-        valueFrom:
-          fieldRef:
-            apiVersion: v1
-            fieldPath: spec.nodeName
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon/aws-network-policy-agent:v1.4.0-eksbuild.1
-      imagePullPolicy: IfNotPresent
-      name: aws-eks-nodeagent
-      ports:
-      - containerPort: 8162
-        hostPort: 8162
-        name: agentmetrics
-        protocol: TCP
-      resources:
-        requests:
-          cpu: 25m
-      securityContext:
-        capabilities:
-          add:
-          - NET_ADMIN
-        privileged: true
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: File
-      volumeMounts:
-      - mountPath: /host/opt/cni/bin
-        name: cni-bin-dir
-      - mountPath: /sys/fs/bpf
-        name: bpf-pin-path
-      - mountPath: /var/log/aws-routed-eni
-        name: log-dir
-      - mountPath: /var/run/aws-node
-        name: run-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-mdmqx
-        readOnly: true
-    dnsPolicy: ClusterFirst
-    enableServiceLinks: true
-    hostNetwork: true
-    initContainers:
-    - env:
-      - name: DISABLE_TCP_EARLY_DEMUX
-        value: "false"
-      - name: ENABLE_IPv6
-        value: "false"
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni-init:v1.22.4-eksbuild.3
-      imagePullPolicy: IfNotPresent
-      name: aws-vpc-cni-init
-      resources:
-        requests:
-          cpu: 25m
-      securityContext:
-        privileged: true
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: File
-      volumeMounts:
-      - mountPath: /host/opt/cni/bin
-        name: cni-bin-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-mdmqx
-        readOnly: true
-    nodeName: ip-10-0-2-44.us-east-2.compute.internal
-    preemptionPolicy: PreemptLowerPriority
-    priority: 2000001000
-    priorityClassName: system-node-critical
-    restartPolicy: Always
-    schedulerName: default-scheduler
-    securityContext: {}
-    serviceAccount: aws-node
-    serviceAccountName: aws-node
-    terminationGracePeriodSeconds: 10
-    tolerations:
-    - operator: Exists
-    - effect: NoExecute
-      key: node.kubernetes.io/not-ready
-      operator: Exists
-    - effect: NoExecute
-      key: node.kubernetes.io/unreachable
-      operator: Exists
-    - effect: NoSchedule
-      key: node.kubernetes.io/disk-pressure
-      operator: Exists
-    - effect: NoSchedule
-      key: node.kubernetes.io/memory-pressure
-      operator: Exists
-    - effect: NoSchedule
-      key: node.kubernetes.io/pid-pressure
-      operator: Exists
-    - effect: NoSchedule
-      key: node.kubernetes.io/unschedulable
-      operator: Exists
-    - effect: NoSchedule
-      key: node.kubernetes.io/network-unavailable
-      operator: Exists
-    volumes:
-    - hostPath:
-        path: /sys/fs/bpf
-        type: ""
-      name: bpf-pin-path
-    - hostPath:
-        path: /opt/cni/bin
-        type: ""
-      name: cni-bin-dir
-    - hostPath:
-        path: /etc/cni/net.d
-        type: ""
-      name: cni-net-dir
-    - hostPath:
-        path: /var/log/aws-routed-eni
-        type: DirectoryOrCreate
-      name: log-dir
-    - hostPath:
-        path: /var/run/aws-node
-        type: DirectoryOrCreate
-      name: run-dir
-    - hostPath:
-        path: /run/xtables.lock
-        type: FileOrCreate
-      name: xtables-lock
-    - name: kube-api-access-mdmqx
-      projected:
-        defaultMode: 420
-        sources:
-        - serviceAccountToken:
-            expirationSeconds: 3607
-            path: token
-        - configMap:
-            items:
-            - key: ca.crt
-              path: ca.crt
-            name: kube-root-ca.crt
-        - downwardAPI:
-            items:
-            - fieldRef:
-                apiVersion: v1
-                fieldPath: metadata.namespace
-              path: namespace
-  status:
-    conditions:
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:07Z"
-      status: "True"
-      type: PodReadyToStartContainers
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:13Z"
-      status: "True"
-      type: Initialized
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
-      status: "True"
-      type: Ready
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
-      status: "True"
-      type: ContainersReady
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:07Z"
-      status: "True"
-      type: PodScheduled
-    containerStatuses:
-    - containerID: containerd://9530cd92f45328394c68678bf08109882fc10160f8b08d32b3825b7f5b211b0f
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon/aws-network-policy-agent:v1.4.0-eksbuild.1
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon/aws-network-policy-agent@sha256:c8555b6f2aed6d795a1637e0fe7f1f47cca2465354438157bdc8d8a6beb61045
-      lastState: {}
-      name: aws-eks-nodeagent
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:17Z"
-      volumeMounts:
-      - mountPath: /host/opt/cni/bin
-        name: cni-bin-dir
-      - mountPath: /sys/fs/bpf
-        name: bpf-pin-path
-      - mountPath: /var/log/aws-routed-eni
-        name: log-dir
-      - mountPath: /var/run/aws-node
-        name: run-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-mdmqx
-        readOnly: true
-        recursiveReadOnly: Disabled
-    - containerID: containerd://be45af0e9815a48c6bc59859acea96b4150c8bbd1d2855c6e720e35703ecc3a6
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni:v1.22.4-eksbuild.3
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni@sha256:7ba0bb50de053432467d1cc629dfc846de4e534f00b73828a1ff33fcee70c8e7
-      lastState: {}
-      name: aws-node
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:15Z"
-      volumeMounts:
-      - mountPath: /host/opt/cni/bin
-        name: cni-bin-dir
-      - mountPath: /host/etc/cni/net.d
-        name: cni-net-dir
-      - mountPath: /host/var/log/aws-routed-eni
-        name: log-dir
-      - mountPath: /var/run/aws-node
-        name: run-dir
-      - mountPath: /run/xtables.lock
-        name: xtables-lock
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-mdmqx
-        readOnly: true
-        recursiveReadOnly: Disabled
-    hostIP: 10.0.2.44
-    hostIPs:
-    - ip: 10.0.2.44
-    initContainerStatuses:
-    - containerID: containerd://3dd203e56b384ee13a4b8adb89e62d87bc471d455242e9773779d9cf2dee7624
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni-init:v1.22.4-eksbuild.3
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni-init@sha256:57866ee72791f6564a316a8e9ad5df0737200f64cbfcbf6ad4153b5bc80f4fb6
-      lastState: {}
-      name: aws-vpc-cni-init
-      ready: true
-      restartCount: 0
-      started: false
-      state:
-        terminated:
-          containerID: containerd://3dd203e56b384ee13a4b8adb89e62d87bc471d455242e9773779d9cf2dee7624
-          exitCode: 0
-          finishedAt: "2026-10-08T04:26:11Z"
-          reason: Completed
-          startedAt: "2026-10-08T04:26:11Z"
-      volumeMounts:
-      - mountPath: /host/opt/cni/bin
-        name: cni-bin-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-mdmqx
-        readOnly: true
-        recursiveReadOnly: Disabled
-    phase: Running
-    podIP: 10.0.2.44
-    podIPs:
-    - ip: 10.0.2.44
-    qosClass: Burstable
-    startTime: "2026-10-08T04:26:06Z"
-- apiVersion: v1
-  kind: Pod
-  metadata:
     creationTimestamp: "2026-10-08T04:28:10Z"
     generateName: aws-node-
     generation: 1
@@ -2323,1654 +2003,26 @@ items:
 - apiVersion: v1
   kind: Pod
   metadata:
-    creationTimestamp: "2026-10-07T22:07:43Z"
-    generateName: coredns-66dbb7bd9d-
+    creationTimestamp: "2026-10-08T06:56:38Z"
+    generateName: aws-node-
     generation: 1
     labels:
-      eks.amazonaws.com/component: coredns
-      k8s-app: kube-dns
-      pod-template-hash: 66dbb7bd9d
-    name: coredns-66dbb7bd9d-5v6xc
-    namespace: kube-system
-    ownerReferences:
-    - apiVersion: apps/v1
-      blockOwnerDeletion: true
-      controller: true
-      kind: ReplicaSet
-      name: coredns-66dbb7bd9d
-      uid: 26c9ad71-3311-4777-9f6a-09683ce80355
-    resourceVersion: "1060625"
-    uid: f16f12f5-ee06-42a6-99f9-fa702c1409fc
-  spec:
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: kubernetes.io/os
-              operator: In
-              values:
-              - linux
-            - key: kubernetes.io/arch
-              operator: In
-              values:
-              - amd64
-              - arm64
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchExpressions:
-              - key: k8s-app
-                operator: In
-                values:
-                - kube-dns
-            topologyKey: kubernetes.io/hostname
-          weight: 100
-    containers:
-    - args:
-      - -conf
-      - /etc/coredns/Corefile
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns:v1.11.4-eksbuild.53
-      imagePullPolicy: IfNotPresent
-      livenessProbe:
-        failureThreshold: 5
-        httpGet:
-          path: /health
-          port: 8080
-          scheme: HTTP
-        initialDelaySeconds: 60
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 5
-      name: coredns
-      ports:
-      - containerPort: 53
-        name: dns
-        protocol: UDP
-      - containerPort: 53
-        name: dns-tcp
-        protocol: TCP
-      - containerPort: 9153
-        name: metrics
-        protocol: TCP
-      readinessProbe:
-        failureThreshold: 3
-        httpGet:
-          path: /ready
-          port: 8181
-          scheme: HTTP
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 1
-      resources:
-        limits:
-          memory: 170Mi
-        requests:
-          cpu: 100m
-          memory: 70Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        capabilities:
-          add:
-          - NET_BIND_SERVICE
-          drop:
-          - ALL
-        readOnlyRootFilesystem: true
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: File
-      volumeMounts:
-      - mountPath: /etc/coredns
-        name: config-volume
-        readOnly: true
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-6hfb6
-        readOnly: true
-    dnsPolicy: Default
-    enableServiceLinks: true
-    nodeName: ip-10-0-2-44.us-east-2.compute.internal
-    preemptionPolicy: PreemptLowerPriority
-    priority: 2000000000
-    priorityClassName: system-cluster-critical
-    restartPolicy: Always
-    schedulerName: default-scheduler
-    securityContext: {}
-    serviceAccount: coredns
-    serviceAccountName: coredns
-    terminationGracePeriodSeconds: 30
-    tolerations:
-    - effect: NoSchedule
-      key: node-role.kubernetes.io/control-plane
-    - key: CriticalAddonsOnly
-      operator: Exists
-    - effect: NoExecute
-      key: node.kubernetes.io/not-ready
-      operator: Exists
-      tolerationSeconds: 300
-    - effect: NoExecute
-      key: node.kubernetes.io/unreachable
-      operator: Exists
-      tolerationSeconds: 300
-    topologySpreadConstraints:
-    - labelSelector:
-        matchLabels:
-          k8s-app: kube-dns
-      maxSkew: 1
-      topologyKey: topology.kubernetes.io/zone
-      whenUnsatisfiable: ScheduleAnyway
-    volumes:
-    - configMap:
-        defaultMode: 420
-        items:
-        - key: Corefile
-          path: Corefile
-        name: coredns
-      name: config-volume
-    - name: kube-api-access-6hfb6
-      projected:
-        defaultMode: 420
-        sources:
-        - serviceAccountToken:
-            expirationSeconds: 3607
-            path: token
-        - configMap:
-            items:
-            - key: ca.crt
-              path: ca.crt
-            name: kube-root-ca.crt
-        - downwardAPI:
-            items:
-            - fieldRef:
-                apiVersion: v1
-                fieldPath: metadata.namespace
-              path: namespace
-  status:
-    conditions:
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:18Z"
-      status: "True"
-      type: PodReadyToStartContainers
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
-      status: "True"
-      type: Initialized
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:21Z"
-      status: "True"
-      type: Ready
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:21Z"
-      status: "True"
-      type: ContainersReady
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
-      status: "True"
-      type: PodScheduled
-    containerStatuses:
-    - containerID: containerd://b779de4202f2195fe952b231d413f652dbad6e9c0ca2ada6dfa1a6401d8b7e2d
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns:v1.11.4-eksbuild.53
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns@sha256:ba66f10a4e152b09ecfcf413d61d87caa5357ca12acd5bac8383eb9b09359f69
-      lastState: {}
-      name: coredns
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:21Z"
-      volumeMounts:
-      - mountPath: /etc/coredns
-        name: config-volume
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-6hfb6
-        readOnly: true
-        recursiveReadOnly: Disabled
-    hostIP: 10.0.2.44
-    hostIPs:
-    - ip: 10.0.2.44
-    phase: Running
-    podIP: 10.0.2.8
-    podIPs:
-    - ip: 10.0.2.8
-    qosClass: Burstable
-    startTime: "2026-10-08T04:26:17Z"
-- apiVersion: v1
-  kind: Pod
-  metadata:
-    creationTimestamp: "2026-10-07T22:22:51Z"
-    generateName: coredns-66dbb7bd9d-
-    generation: 1
-    labels:
-      eks.amazonaws.com/component: coredns
-      k8s-app: kube-dns
-      pod-template-hash: 66dbb7bd9d
-    name: coredns-66dbb7bd9d-s9gcd
-    namespace: kube-system
-    ownerReferences:
-    - apiVersion: apps/v1
-      blockOwnerDeletion: true
-      controller: true
-      kind: ReplicaSet
-      name: coredns-66dbb7bd9d
-      uid: 26c9ad71-3311-4777-9f6a-09683ce80355
-    resourceVersion: "1060624"
-    uid: f70835ec-3722-4464-8deb-4064a6f59480
-  spec:
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: kubernetes.io/os
-              operator: In
-              values:
-              - linux
-            - key: kubernetes.io/arch
-              operator: In
-              values:
-              - amd64
-              - arm64
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchExpressions:
-              - key: k8s-app
-                operator: In
-                values:
-                - kube-dns
-            topologyKey: kubernetes.io/hostname
-          weight: 100
-    containers:
-    - args:
-      - -conf
-      - /etc/coredns/Corefile
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns:v1.11.4-eksbuild.53
-      imagePullPolicy: IfNotPresent
-      livenessProbe:
-        failureThreshold: 5
-        httpGet:
-          path: /health
-          port: 8080
-          scheme: HTTP
-        initialDelaySeconds: 60
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 5
-      name: coredns
-      ports:
-      - containerPort: 53
-        name: dns
-        protocol: UDP
-      - containerPort: 53
-        name: dns-tcp
-        protocol: TCP
-      - containerPort: 9153
-        name: metrics
-        protocol: TCP
-      readinessProbe:
-        failureThreshold: 3
-        httpGet:
-          path: /ready
-          port: 8181
-          scheme: HTTP
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 1
-      resources:
-        limits:
-          memory: 170Mi
-        requests:
-          cpu: 100m
-          memory: 70Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        capabilities:
-          add:
-          - NET_BIND_SERVICE
-          drop:
-          - ALL
-        readOnlyRootFilesystem: true
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: File
-      volumeMounts:
-      - mountPath: /etc/coredns
-        name: config-volume
-        readOnly: true
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-rg4fr
-        readOnly: true
-    dnsPolicy: Default
-    enableServiceLinks: true
-    nodeName: ip-10-0-2-44.us-east-2.compute.internal
-    preemptionPolicy: PreemptLowerPriority
-    priority: 2000000000
-    priorityClassName: system-cluster-critical
-    restartPolicy: Always
-    schedulerName: default-scheduler
-    securityContext: {}
-    serviceAccount: coredns
-    serviceAccountName: coredns
-    terminationGracePeriodSeconds: 30
-    tolerations:
-    - effect: NoSchedule
-      key: node-role.kubernetes.io/control-plane
-    - key: CriticalAddonsOnly
-      operator: Exists
-    - effect: NoExecute
-      key: node.kubernetes.io/not-ready
-      operator: Exists
-      tolerationSeconds: 300
-    - effect: NoExecute
-      key: node.kubernetes.io/unreachable
-      operator: Exists
-      tolerationSeconds: 300
-    topologySpreadConstraints:
-    - labelSelector:
-        matchLabels:
-          k8s-app: kube-dns
-      maxSkew: 1
-      topologyKey: topology.kubernetes.io/zone
-      whenUnsatisfiable: ScheduleAnyway
-    volumes:
-    - configMap:
-        defaultMode: 420
-        items:
-        - key: Corefile
-          path: Corefile
-        name: coredns
-      name: config-volume
-    - name: kube-api-access-rg4fr
-      projected:
-        defaultMode: 420
-        sources:
-        - serviceAccountToken:
-            expirationSeconds: 3607
-            path: token
-        - configMap:
-            items:
-            - key: ca.crt
-              path: ca.crt
-            name: kube-root-ca.crt
-        - downwardAPI:
-            items:
-            - fieldRef:
-                apiVersion: v1
-                fieldPath: metadata.namespace
-              path: namespace
-  status:
-    conditions:
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:18Z"
-      status: "True"
-      type: PodReadyToStartContainers
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
-      status: "True"
-      type: Initialized
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:21Z"
-      status: "True"
-      type: Ready
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:21Z"
-      status: "True"
-      type: ContainersReady
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
-      status: "True"
-      type: PodScheduled
-    containerStatuses:
-    - containerID: containerd://77a7999933ca547104bccf3bb656546f1fbaa68511e29677ea0273bf62863052
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns:v1.11.4-eksbuild.53
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns@sha256:ba66f10a4e152b09ecfcf413d61d87caa5357ca12acd5bac8383eb9b09359f69
-      lastState: {}
-      name: coredns
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:21Z"
-      volumeMounts:
-      - mountPath: /etc/coredns
-        name: config-volume
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-rg4fr
-        readOnly: true
-        recursiveReadOnly: Disabled
-    hostIP: 10.0.2.44
-    hostIPs:
-    - ip: 10.0.2.44
-    phase: Running
-    podIP: 10.0.2.77
-    podIPs:
-    - ip: 10.0.2.77
-    qosClass: Burstable
-    startTime: "2026-10-08T04:26:17Z"
-- apiVersion: v1
-  kind: Pod
-  metadata:
-    creationTimestamp: "2026-10-07T22:22:51Z"
-    generateName: ebs-csi-controller-6cd47c6cd-
-    generation: 1
-    labels:
-      app: ebs-csi-controller
-      app.kubernetes.io/component: csi-driver
-      app.kubernetes.io/managed-by: EKS
-      app.kubernetes.io/name: aws-ebs-csi-driver
-      app.kubernetes.io/version: 1.66.0
-      pod-template-hash: 6cd47c6cd
-    name: ebs-csi-controller-6cd47c6cd-b8chw
-    namespace: kube-system
-    ownerReferences:
-    - apiVersion: apps/v1
-      blockOwnerDeletion: true
-      controller: true
-      kind: ReplicaSet
-      name: ebs-csi-controller-6cd47c6cd
-      uid: d927af6d-94c4-40bb-93d1-bf1509d3bccd
-    resourceVersion: "1060777"
-    uid: eacd05c6-836b-4daf-936e-dba3383cd721
-  spec:
-    affinity:
-      nodeAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - preference:
-            matchExpressions:
-            - key: eks.amazonaws.com/compute-type
-              operator: NotIn
-              values:
-              - fargate
-              - auto
-              - hybrid
-          weight: 1
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - ebs-csi-controller
-            topologyKey: kubernetes.io/hostname
-          weight: 100
-    containers:
-    - args:
-      - controller
-      - --endpoint=$(CSI_ENDPOINT)
-      - --k8s-tag-cluster-id=etechapp-eks-25kmRfC1
-      - --batching=true
-      - --logging-format=text
-      - --user-agent-extra=eks
-      - --v=2
-      env:
-      - name: CSI_ENDPOINT
-        value: unix:///var/lib/csi/sockets/pluginproxy/csi.sock
-      - name: CSI_NODE_NAME
-        valueFrom:
-          fieldRef:
-            apiVersion: v1
-            fieldPath: spec.nodeName
-      - name: AWS_ACCESS_KEY_ID
-        valueFrom:
-          secretKeyRef:
-            key: key_id
-            name: aws-secret
-            optional: true
-      - name: AWS_SECRET_ACCESS_KEY
-        valueFrom:
-          secretKeyRef:
-            key: access_key
-            name: aws-secret
-            optional: true
-      - name: AWS_EC2_ENDPOINT
-        valueFrom:
-          configMapKeyRef:
-            key: endpoint
-            name: aws-meta
-            optional: true
-      - name: AWS_SAGEMAKER_ENDPOINT
-        valueFrom:
-          configMapKeyRef:
-            key: sagemaker_endpoint
-            name: aws-meta
-            optional: true
-      - name: AWS_REGION
-        value: us-east-2
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      - name: AWS_ROLE_ARN
-        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
-      - name: AWS_WEB_IDENTITY_TOKEN_FILE
-        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver:v1.66.0
-      imagePullPolicy: IfNotPresent
-      livenessProbe:
-        failureThreshold: 10
-        httpGet:
-          path: /healthz
-          port: healthz
-          scheme: HTTP
-        initialDelaySeconds: 10
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 60
-      name: ebs-plugin
-      ports:
-      - containerPort: 9808
-        name: healthz
-        protocol: TCP
-      readinessProbe:
-        failureThreshold: 5
-        httpGet:
-          path: /healthz
-          port: healthz
-          scheme: HTTP
-        initialDelaySeconds: 10
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 60
-      resources:
-        limits:
-          memory: 256Mi
-        requests:
-          cpu: 10m
-          memory: 40Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-        seccompProfile:
-          type: RuntimeDefault
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-c48kq
-        readOnly: true
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-    - args:
-      - --timeout=60s
-      - --csi-address=$(ADDRESS)
-      - --v=2
-      - --feature-gates=Topology=true
-      - --extra-create-metadata
-      - --leader-election=true
-      - --default-fstype=ext4
-      - --kube-api-qps=20
-      - --kube-api-burst=100
-      - --worker-threads=100
-      - --retry-interval-max=30m
-      env:
-      - name: ADDRESS
-        value: /var/lib/csi/sockets/pluginproxy/csi.sock
-      - name: ENABLE_VAC_FALLBACK
-        value: "true"
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      - name: AWS_DEFAULT_REGION
-        value: us-east-2
-      - name: AWS_REGION
-        value: us-east-2
-      - name: AWS_ROLE_ARN
-        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
-      - name: AWS_WEB_IDENTITY_TOKEN_FILE
-        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-provisioner:v6.3.0-eksbuild.7
-      imagePullPolicy: IfNotPresent
-      name: csi-provisioner
-      resources:
-        limits:
-          memory: 256Mi
-        requests:
-          cpu: 10m
-          memory: 40Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-        seccompProfile:
-          type: RuntimeDefault
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-c48kq
-        readOnly: true
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-    - args:
-      - --timeout=6m
-      - --csi-address=$(ADDRESS)
-      - --v=2
-      - --leader-election=true
-      - --kube-api-qps=20
-      - --kube-api-burst=100
-      - --worker-threads=100
-      - --retry-interval-max=5m
-      env:
-      - name: ADDRESS
-        value: /var/lib/csi/sockets/pluginproxy/csi.sock
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      - name: AWS_DEFAULT_REGION
-        value: us-east-2
-      - name: AWS_REGION
-        value: us-east-2
-      - name: AWS_ROLE_ARN
-        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
-      - name: AWS_WEB_IDENTITY_TOKEN_FILE
-        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-attacher:v4.12.0-eksbuild.8
-      imagePullPolicy: IfNotPresent
-      name: csi-attacher
-      resources:
-        limits:
-          memory: 256Mi
-        requests:
-          cpu: 10m
-          memory: 40Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-        seccompProfile:
-          type: RuntimeDefault
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-c48kq
-        readOnly: true
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-    - args:
-      - --csi-address=$(ADDRESS)
-      - --leader-election=true
-      - --v=2
-      - --extra-create-metadata
-      - --kube-api-qps=20
-      - --kube-api-burst=100
-      - --worker-threads=100
-      - --retry-interval-max=30m
-      env:
-      - name: ADDRESS
-        value: /var/lib/csi/sockets/pluginproxy/csi.sock
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      - name: AWS_DEFAULT_REGION
-        value: us-east-2
-      - name: AWS_REGION
-        value: us-east-2
-      - name: AWS_ROLE_ARN
-        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
-      - name: AWS_WEB_IDENTITY_TOKEN_FILE
-        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-snapshotter:v8.6.0-eksbuild.8
-      imagePullPolicy: IfNotPresent
-      name: csi-snapshotter
-      resources:
-        limits:
-          memory: 256Mi
-        requests:
-          cpu: 10m
-          memory: 40Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-        seccompProfile:
-          type: RuntimeDefault
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-c48kq
-        readOnly: true
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-    - args:
-      - --timeout=60s
-      - --extra-modify-metadata
-      - --csi-address=$(ADDRESS)
-      - --v=2
-      - --handle-volume-inuse-error=false
-      - --leader-election=true
-      - --kube-api-qps=20
-      - --kube-api-burst=100
-      - --workers=100
-      - --retry-interval-max=30m
-      env:
-      - name: ADDRESS
-        value: /var/lib/csi/sockets/pluginproxy/csi.sock
-      - name: ENABLE_VAC_FALLBACK
-        value: "true"
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      - name: AWS_DEFAULT_REGION
-        value: us-east-2
-      - name: AWS_REGION
-        value: us-east-2
-      - name: AWS_ROLE_ARN
-        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
-      - name: AWS_WEB_IDENTITY_TOKEN_FILE
-        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-resizer:v2.2.1-eksbuild.6
-      imagePullPolicy: IfNotPresent
-      name: csi-resizer
-      resources:
-        limits:
-          memory: 256Mi
-        requests:
-          cpu: 10m
-          memory: 40Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-        seccompProfile:
-          type: RuntimeDefault
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-c48kq
-        readOnly: true
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-    - args:
-      - --csi-address=/csi/csi.sock
-      - --probe-timeout=60s
-      env:
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      - name: AWS_DEFAULT_REGION
-        value: us-east-2
-      - name: AWS_REGION
-        value: us-east-2
-      - name: AWS_ROLE_ARN
-        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
-      - name: AWS_WEB_IDENTITY_TOKEN_FILE
-        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe:v2.19.0-eksbuild.7
-      imagePullPolicy: IfNotPresent
-      name: liveness-probe
-      resources:
-        limits:
-          memory: 32Mi
-        requests:
-          cpu: 10m
-          memory: 32Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /csi
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-c48kq
-        readOnly: true
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-    dnsPolicy: ClusterFirst
-    enableServiceLinks: true
-    nodeName: ip-10-0-2-44.us-east-2.compute.internal
-    nodeSelector:
-      kubernetes.io/os: linux
-    preemptionPolicy: PreemptLowerPriority
-    priority: 2000000000
-    priorityClassName: system-cluster-critical
-    restartPolicy: Always
-    schedulerName: default-scheduler
-    securityContext:
-      fsGroup: 1000
-      runAsGroup: 1000
-      runAsNonRoot: true
-      runAsUser: 1000
-    serviceAccount: ebs-csi-controller-sa
-    serviceAccountName: ebs-csi-controller-sa
-    terminationGracePeriodSeconds: 30
-    tolerations:
-    - key: CriticalAddonsOnly
-      operator: Exists
-    - effect: NoExecute
-      operator: Exists
-      tolerationSeconds: 300
-    volumes:
-    - name: aws-iam-token
-      projected:
-        defaultMode: 420
-        sources:
-        - serviceAccountToken:
-            audience: sts.amazonaws.com
-            expirationSeconds: 86400
-            path: token
-    - emptyDir: {}
-      name: socket-dir
-    - name: kube-api-access-c48kq
-      projected:
-        defaultMode: 420
-        sources:
-        - serviceAccountToken:
-            expirationSeconds: 3607
-            path: token
-        - configMap:
-            items:
-            - key: ca.crt
-              path: ca.crt
-            name: kube-root-ca.crt
-        - downwardAPI:
-            items:
-            - fieldRef:
-                apiVersion: v1
-                fieldPath: metadata.namespace
-              path: namespace
-  status:
-    conditions:
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:30Z"
-      status: "True"
-      type: PodReadyToStartContainers
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
-      status: "True"
-      type: Initialized
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:42Z"
-      status: "True"
-      type: Ready
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:42Z"
-      status: "True"
-      type: ContainersReady
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
-      status: "True"
-      type: PodScheduled
-    containerStatuses:
-    - containerID: containerd://31a3dbce7f7a8080c69eb09b28742410572ac207b1e5f742a6dcae3a602d7c94
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-attacher:v4.12.0-eksbuild.8
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-attacher@sha256:f12da9edb687581e282e7e2a9ad34fa3a542f6c23610d06820da0802291d76ff
-      lastState: {}
-      name: csi-attacher
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:37Z"
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-c48kq
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-        recursiveReadOnly: Disabled
-    - containerID: containerd://634765eb07a114802cc1ef0e1b3684b24f57a3501dcf75eaa1330edac5645a93
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-provisioner:v6.3.0-eksbuild.7
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-provisioner@sha256:344672a6d3a794c1fb8eea8b586c66cac3f1936341aa9c8e222dcd85e7c039be
-      lastState: {}
-      name: csi-provisioner
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:35Z"
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-c48kq
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-        recursiveReadOnly: Disabled
-    - containerID: containerd://db9e528f15e71bfdbf699de26589f7a03b225e1d54490d2399a035c9482883ae
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-resizer:v2.2.1-eksbuild.6
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-resizer@sha256:3e9480a608a19f903541ab91e44b2c2e4da7b45dece01601630fc837425c2a81
-      lastState: {}
-      name: csi-resizer
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:40Z"
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-c48kq
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-        recursiveReadOnly: Disabled
-    - containerID: containerd://df3f858924b95306736017655bd02049ebe0d9f0f332cc358b151fb4209ac066
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-snapshotter:v8.6.0-eksbuild.8
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-snapshotter@sha256:1a0c4c40c14e632ab8fd1eba0e2d1363089bf11e4207461c4cc4285c81afceaf
-      lastState: {}
-      name: csi-snapshotter
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:38Z"
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-c48kq
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-        recursiveReadOnly: Disabled
-    - containerID: containerd://b046ae9a456f710608005293dac3306af7764c88feb284fa57cb845da3945ed9
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver:v1.66.0
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver@sha256:e2564165048c1706a4c64a648d982c974bd07280ab27c7cce4b6c7906afb0c5d
-      lastState: {}
-      name: ebs-plugin
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:32Z"
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-c48kq
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-        recursiveReadOnly: Disabled
-    - containerID: containerd://e599669250a04a58ce5b80698b1d2d06d6d7b21db738afe6d719170d028552df
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe:v2.19.0-eksbuild.7
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe@sha256:2ec65c594fe3283d4376697a8c05a832391d5e4403bc5142617cb9d7004d54c5
-      lastState: {}
-      name: liveness-probe
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:41Z"
-      volumeMounts:
-      - mountPath: /csi
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-c48kq
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-        recursiveReadOnly: Disabled
-    hostIP: 10.0.2.44
-    hostIPs:
-    - ip: 10.0.2.44
-    phase: Running
-    podIP: 10.0.2.152
-    podIPs:
-    - ip: 10.0.2.152
-    qosClass: Burstable
-    startTime: "2026-10-08T04:26:17Z"
-- apiVersion: v1
-  kind: Pod
-  metadata:
-    creationTimestamp: "2026-10-07T22:07:44Z"
-    generateName: ebs-csi-controller-6cd47c6cd-
-    generation: 1
-    labels:
-      app: ebs-csi-controller
-      app.kubernetes.io/component: csi-driver
-      app.kubernetes.io/managed-by: EKS
-      app.kubernetes.io/name: aws-ebs-csi-driver
-      app.kubernetes.io/version: 1.66.0
-      pod-template-hash: 6cd47c6cd
-    name: ebs-csi-controller-6cd47c6cd-hhxqs
-    namespace: kube-system
-    ownerReferences:
-    - apiVersion: apps/v1
-      blockOwnerDeletion: true
-      controller: true
-      kind: ReplicaSet
-      name: ebs-csi-controller-6cd47c6cd
-      uid: d927af6d-94c4-40bb-93d1-bf1509d3bccd
-    resourceVersion: "1060774"
-    uid: 26c795dd-6cd3-494e-ade1-0b73c3ae2793
-  spec:
-    affinity:
-      nodeAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - preference:
-            matchExpressions:
-            - key: eks.amazonaws.com/compute-type
-              operator: NotIn
-              values:
-              - fargate
-              - auto
-              - hybrid
-          weight: 1
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-        - podAffinityTerm:
-            labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - ebs-csi-controller
-            topologyKey: kubernetes.io/hostname
-          weight: 100
-    containers:
-    - args:
-      - controller
-      - --endpoint=$(CSI_ENDPOINT)
-      - --k8s-tag-cluster-id=etechapp-eks-25kmRfC1
-      - --batching=true
-      - --logging-format=text
-      - --user-agent-extra=eks
-      - --v=2
-      env:
-      - name: CSI_ENDPOINT
-        value: unix:///var/lib/csi/sockets/pluginproxy/csi.sock
-      - name: CSI_NODE_NAME
-        valueFrom:
-          fieldRef:
-            apiVersion: v1
-            fieldPath: spec.nodeName
-      - name: AWS_ACCESS_KEY_ID
-        valueFrom:
-          secretKeyRef:
-            key: key_id
-            name: aws-secret
-            optional: true
-      - name: AWS_SECRET_ACCESS_KEY
-        valueFrom:
-          secretKeyRef:
-            key: access_key
-            name: aws-secret
-            optional: true
-      - name: AWS_EC2_ENDPOINT
-        valueFrom:
-          configMapKeyRef:
-            key: endpoint
-            name: aws-meta
-            optional: true
-      - name: AWS_SAGEMAKER_ENDPOINT
-        valueFrom:
-          configMapKeyRef:
-            key: sagemaker_endpoint
-            name: aws-meta
-            optional: true
-      - name: AWS_REGION
-        value: us-east-2
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      - name: AWS_ROLE_ARN
-        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
-      - name: AWS_WEB_IDENTITY_TOKEN_FILE
-        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver:v1.66.0
-      imagePullPolicy: IfNotPresent
-      livenessProbe:
-        failureThreshold: 10
-        httpGet:
-          path: /healthz
-          port: healthz
-          scheme: HTTP
-        initialDelaySeconds: 10
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 60
-      name: ebs-plugin
-      ports:
-      - containerPort: 9808
-        name: healthz
-        protocol: TCP
-      readinessProbe:
-        failureThreshold: 5
-        httpGet:
-          path: /healthz
-          port: healthz
-          scheme: HTTP
-        initialDelaySeconds: 10
-        periodSeconds: 10
-        successThreshold: 1
-        timeoutSeconds: 60
-      resources:
-        limits:
-          memory: 256Mi
-        requests:
-          cpu: 10m
-          memory: 40Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-        seccompProfile:
-          type: RuntimeDefault
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-s4kzw
-        readOnly: true
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-    - args:
-      - --timeout=60s
-      - --csi-address=$(ADDRESS)
-      - --v=2
-      - --feature-gates=Topology=true
-      - --extra-create-metadata
-      - --leader-election=true
-      - --default-fstype=ext4
-      - --kube-api-qps=20
-      - --kube-api-burst=100
-      - --worker-threads=100
-      - --retry-interval-max=30m
-      env:
-      - name: ADDRESS
-        value: /var/lib/csi/sockets/pluginproxy/csi.sock
-      - name: ENABLE_VAC_FALLBACK
-        value: "true"
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      - name: AWS_DEFAULT_REGION
-        value: us-east-2
-      - name: AWS_REGION
-        value: us-east-2
-      - name: AWS_ROLE_ARN
-        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
-      - name: AWS_WEB_IDENTITY_TOKEN_FILE
-        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-provisioner:v6.3.0-eksbuild.7
-      imagePullPolicy: IfNotPresent
-      name: csi-provisioner
-      resources:
-        limits:
-          memory: 256Mi
-        requests:
-          cpu: 10m
-          memory: 40Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-        seccompProfile:
-          type: RuntimeDefault
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-s4kzw
-        readOnly: true
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-    - args:
-      - --timeout=6m
-      - --csi-address=$(ADDRESS)
-      - --v=2
-      - --leader-election=true
-      - --kube-api-qps=20
-      - --kube-api-burst=100
-      - --worker-threads=100
-      - --retry-interval-max=5m
-      env:
-      - name: ADDRESS
-        value: /var/lib/csi/sockets/pluginproxy/csi.sock
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      - name: AWS_DEFAULT_REGION
-        value: us-east-2
-      - name: AWS_REGION
-        value: us-east-2
-      - name: AWS_ROLE_ARN
-        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
-      - name: AWS_WEB_IDENTITY_TOKEN_FILE
-        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-attacher:v4.12.0-eksbuild.8
-      imagePullPolicy: IfNotPresent
-      name: csi-attacher
-      resources:
-        limits:
-          memory: 256Mi
-        requests:
-          cpu: 10m
-          memory: 40Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-        seccompProfile:
-          type: RuntimeDefault
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-s4kzw
-        readOnly: true
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-    - args:
-      - --csi-address=$(ADDRESS)
-      - --leader-election=true
-      - --v=2
-      - --extra-create-metadata
-      - --kube-api-qps=20
-      - --kube-api-burst=100
-      - --worker-threads=100
-      - --retry-interval-max=30m
-      env:
-      - name: ADDRESS
-        value: /var/lib/csi/sockets/pluginproxy/csi.sock
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      - name: AWS_DEFAULT_REGION
-        value: us-east-2
-      - name: AWS_REGION
-        value: us-east-2
-      - name: AWS_ROLE_ARN
-        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
-      - name: AWS_WEB_IDENTITY_TOKEN_FILE
-        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-snapshotter:v8.6.0-eksbuild.8
-      imagePullPolicy: IfNotPresent
-      name: csi-snapshotter
-      resources:
-        limits:
-          memory: 256Mi
-        requests:
-          cpu: 10m
-          memory: 40Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-        seccompProfile:
-          type: RuntimeDefault
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-s4kzw
-        readOnly: true
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-    - args:
-      - --timeout=60s
-      - --extra-modify-metadata
-      - --csi-address=$(ADDRESS)
-      - --v=2
-      - --handle-volume-inuse-error=false
-      - --leader-election=true
-      - --kube-api-qps=20
-      - --kube-api-burst=100
-      - --workers=100
-      - --retry-interval-max=30m
-      env:
-      - name: ADDRESS
-        value: /var/lib/csi/sockets/pluginproxy/csi.sock
-      - name: ENABLE_VAC_FALLBACK
-        value: "true"
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      - name: AWS_DEFAULT_REGION
-        value: us-east-2
-      - name: AWS_REGION
-        value: us-east-2
-      - name: AWS_ROLE_ARN
-        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
-      - name: AWS_WEB_IDENTITY_TOKEN_FILE
-        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-resizer:v2.2.1-eksbuild.6
-      imagePullPolicy: IfNotPresent
-      name: csi-resizer
-      resources:
-        limits:
-          memory: 256Mi
-        requests:
-          cpu: 10m
-          memory: 40Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-        seccompProfile:
-          type: RuntimeDefault
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-s4kzw
-        readOnly: true
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-    - args:
-      - --csi-address=/csi/csi.sock
-      - --probe-timeout=60s
-      env:
-      - name: AWS_STS_REGIONAL_ENDPOINTS
-        value: regional
-      - name: AWS_DEFAULT_REGION
-        value: us-east-2
-      - name: AWS_REGION
-        value: us-east-2
-      - name: AWS_ROLE_ARN
-        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
-      - name: AWS_WEB_IDENTITY_TOKEN_FILE
-        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe:v2.19.0-eksbuild.7
-      imagePullPolicy: IfNotPresent
-      name: liveness-probe
-      resources:
-        limits:
-          memory: 32Mi
-        requests:
-          cpu: 10m
-          memory: 32Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /csi
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-s4kzw
-        readOnly: true
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-    dnsPolicy: ClusterFirst
-    enableServiceLinks: true
-    nodeName: ip-10-0-2-44.us-east-2.compute.internal
-    nodeSelector:
-      kubernetes.io/os: linux
-    preemptionPolicy: PreemptLowerPriority
-    priority: 2000000000
-    priorityClassName: system-cluster-critical
-    restartPolicy: Always
-    schedulerName: default-scheduler
-    securityContext:
-      fsGroup: 1000
-      runAsGroup: 1000
-      runAsNonRoot: true
-      runAsUser: 1000
-    serviceAccount: ebs-csi-controller-sa
-    serviceAccountName: ebs-csi-controller-sa
-    terminationGracePeriodSeconds: 30
-    tolerations:
-    - key: CriticalAddonsOnly
-      operator: Exists
-    - effect: NoExecute
-      operator: Exists
-      tolerationSeconds: 300
-    volumes:
-    - name: aws-iam-token
-      projected:
-        defaultMode: 420
-        sources:
-        - serviceAccountToken:
-            audience: sts.amazonaws.com
-            expirationSeconds: 86400
-            path: token
-    - emptyDir: {}
-      name: socket-dir
-    - name: kube-api-access-s4kzw
-      projected:
-        defaultMode: 420
-        sources:
-        - serviceAccountToken:
-            expirationSeconds: 3607
-            path: token
-        - configMap:
-            items:
-            - key: ca.crt
-              path: ca.crt
-            name: kube-root-ca.crt
-        - downwardAPI:
-            items:
-            - fieldRef:
-                apiVersion: v1
-                fieldPath: metadata.namespace
-              path: namespace
-  status:
-    conditions:
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:30Z"
-      status: "True"
-      type: PodReadyToStartContainers
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
-      status: "True"
-      type: Initialized
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:42Z"
-      status: "True"
-      type: Ready
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:42Z"
-      status: "True"
-      type: ContainersReady
-    - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
-      status: "True"
-      type: PodScheduled
-    containerStatuses:
-    - containerID: containerd://c2ca13ae5dced2f4bb33e8b21337f1e2faec52d8b25115dc1566b407a429c964
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-attacher:v4.12.0-eksbuild.8
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-attacher@sha256:f12da9edb687581e282e7e2a9ad34fa3a542f6c23610d06820da0802291d76ff
-      lastState: {}
-      name: csi-attacher
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:37Z"
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-s4kzw
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-        recursiveReadOnly: Disabled
-    - containerID: containerd://0bafff7db506462a72b017a070a80813d8910da9f10b1e4d15531e667ee387b1
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-provisioner:v6.3.0-eksbuild.7
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-provisioner@sha256:344672a6d3a794c1fb8eea8b586c66cac3f1936341aa9c8e222dcd85e7c039be
-      lastState: {}
-      name: csi-provisioner
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:35Z"
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-s4kzw
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-        recursiveReadOnly: Disabled
-    - containerID: containerd://dd437ed92875da8b072651e7bf97475c47ea38c142edd5de4bc7e02d67d0881b
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-resizer:v2.2.1-eksbuild.6
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-resizer@sha256:3e9480a608a19f903541ab91e44b2c2e4da7b45dece01601630fc837425c2a81
-      lastState: {}
-      name: csi-resizer
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:40Z"
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-s4kzw
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-        recursiveReadOnly: Disabled
-    - containerID: containerd://d2d0553e9b5796166d185cdc24ea15120d489f669723c9c56f887ba13a95cd37
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-snapshotter:v8.6.0-eksbuild.8
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-snapshotter@sha256:1a0c4c40c14e632ab8fd1eba0e2d1363089bf11e4207461c4cc4285c81afceaf
-      lastState: {}
-      name: csi-snapshotter
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:39Z"
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-s4kzw
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-        recursiveReadOnly: Disabled
-    - containerID: containerd://1077f01d77b0fe029bb0dd349b45696280c3dc0e13abda9269e543f819526b5c
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver:v1.66.0
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver@sha256:e2564165048c1706a4c64a648d982c974bd07280ab27c7cce4b6c7906afb0c5d
-      lastState: {}
-      name: ebs-plugin
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:32Z"
-      volumeMounts:
-      - mountPath: /var/lib/csi/sockets/pluginproxy/
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-s4kzw
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-        recursiveReadOnly: Disabled
-    - containerID: containerd://d4b609a05b5277cbff6879562e02ce98ce406415c8045c5c93f78a87b7b91dda
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe:v2.19.0-eksbuild.7
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe@sha256:2ec65c594fe3283d4376697a8c05a832391d5e4403bc5142617cb9d7004d54c5
-      lastState: {}
-      name: liveness-probe
-      ready: true
-      restartCount: 0
-      started: true
-      state:
-        running:
-          startedAt: "2026-10-08T04:26:41Z"
-      volumeMounts:
-      - mountPath: /csi
-        name: socket-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-s4kzw
-        readOnly: true
-        recursiveReadOnly: Disabled
-      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
-        name: aws-iam-token
-        readOnly: true
-        recursiveReadOnly: Disabled
-    hostIP: 10.0.2.44
-    hostIPs:
-    - ip: 10.0.2.44
-    phase: Running
-    podIP: 10.0.2.247
-    podIPs:
-    - ip: 10.0.2.247
-    qosClass: Burstable
-    startTime: "2026-10-08T04:26:17Z"
-- apiVersion: v1
-  kind: Pod
-  metadata:
-    creationTimestamp: "2026-10-08T04:26:07Z"
-    generateName: ebs-csi-node-
-    generation: 1
-    labels:
-      app: ebs-csi-node
-      app.kubernetes.io/component: csi-driver
-      app.kubernetes.io/managed-by: EKS
-      app.kubernetes.io/name: aws-ebs-csi-driver
-      app.kubernetes.io/version: 1.66.0
-      controller-revision-hash: 6d69f77bc5
+      app.kubernetes.io/instance: aws-vpc-cni
+      app.kubernetes.io/name: aws-node
+      controller-revision-hash: 78bd479d97
+      k8s-app: aws-node
       pod-template-generation: "1"
-    name: ebs-csi-node-7985v
+    name: aws-node-zcmbx
     namespace: kube-system
     ownerReferences:
     - apiVersion: apps/v1
       blockOwnerDeletion: true
       controller: true
       kind: DaemonSet
-      name: ebs-csi-node
-      uid: fa6a84a0-912b-4b93-9951-214475a1bd98
-    resourceVersion: "1060823"
-    uid: b1854927-dc95-4056-9ca5-6bd7250c6112
+      name: aws-node
+      uid: 7d5ac1f8-f1d4-4063-b412-573ca0d07037
+    resourceVersion: "1095659"
+    uid: e9d3c9a3-3071-4054-a659-d1cf50156ecd
   spec:
     affinity:
       nodeAffinity:
@@ -3980,164 +2032,213 @@ items:
             - key: metadata.name
               operator: In
               values:
-              - ip-10-0-2-44.us-east-2.compute.internal
+              - ip-10-0-3-65.us-east-2.compute.internal
     containers:
-    - args:
-      - node
-      - --endpoint=$(CSI_ENDPOINT)
-      - --csi-mount-point-prefix=/var/lib/kubelet/plugins/kubernetes.io/csi/ebs.csi.aws.com/
-      - --logging-format=text
-      - --v=2
-      env:
-      - name: CSI_ENDPOINT
-        value: unix:/csi/csi.sock
-      - name: CSI_NODE_NAME
+    - env:
+      - name: ADDITIONAL_ENI_TAGS
+        value: '{}'
+      - name: ANNOTATE_POD_IP
+        value: "false"
+      - name: AWS_VPC_CNI_NODE_PORT_SUPPORT
+        value: "true"
+      - name: AWS_VPC_ENI_MTU
+        value: "9001"
+      - name: AWS_VPC_K8S_CNI_CUSTOM_NETWORK_CFG
+        value: "false"
+      - name: AWS_VPC_K8S_CNI_EXTERNALSNAT
+        value: "false"
+      - name: AWS_VPC_K8S_CNI_LOGLEVEL
+        value: DEBUG
+      - name: AWS_VPC_K8S_CNI_LOG_FILE
+        value: /host/var/log/aws-routed-eni/ipamd.log
+      - name: AWS_VPC_K8S_CNI_RANDOMIZESNAT
+        value: prng
+      - name: AWS_VPC_K8S_CNI_VETHPREFIX
+        value: eni
+      - name: AWS_VPC_K8S_PLUGIN_LOG_FILE
+        value: /var/log/aws-routed-eni/plugin.log
+      - name: AWS_VPC_K8S_PLUGIN_LOG_LEVEL
+        value: DEBUG
+      - name: CLUSTER_NAME
+        value: etechapp-eks-25kmRfC1
+      - name: DISABLE_INTROSPECTION
+        value: "false"
+      - name: DISABLE_METRICS
+        value: "false"
+      - name: DISABLE_NETWORK_RESOURCE_PROVISIONING
+        value: "false"
+      - name: ENABLE_IMDS_ONLY_MODE
+        value: "false"
+      - name: ENABLE_IPv4
+        value: "true"
+      - name: ENABLE_IPv6
+        value: "false"
+      - name: ENABLE_MULTI_NIC
+        value: "false"
+      - name: ENABLE_POD_ENI
+        value: "false"
+      - name: ENABLE_PREFIX_DELEGATION
+        value: "false"
+      - name: ENABLE_SUBNET_DISCOVERY
+        value: "true"
+      - name: NETWORK_POLICY_ENFORCING_MODE
+        value: standard
+      - name: VPC_CNI_VERSION
+        value: v1.22.4
+      - name: VPC_ID
+        value: vpc-0c480028c9567008a
+      - name: WARM_ENI_TARGET
+        value: "1"
+      - name: WARM_PREFIX_TARGET
+        value: "1"
+      - name: MY_NODE_NAME
         valueFrom:
           fieldRef:
             apiVersion: v1
             fieldPath: spec.nodeName
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver:v1.66.0
+      - name: MY_POD_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: metadata.name
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni:v1.22.4-eksbuild.3
       imagePullPolicy: IfNotPresent
-      lifecycle:
-        preStop:
-          exec:
-            command:
-            - /bin/aws-ebs-csi-driver
-            - pre-stop-hook
       livenessProbe:
-        failureThreshold: 5
-        httpGet:
-          path: /healthz
-          port: healthz
-          scheme: HTTP
-        initialDelaySeconds: 10
+        exec:
+          command:
+          - /app/grpc-health-probe
+          - -addr=:50051
+          - -connect-timeout=5s
+          - -rpc-timeout=5s
+        failureThreshold: 3
+        initialDelaySeconds: 60
         periodSeconds: 10
         successThreshold: 1
-        timeoutSeconds: 3
-      name: ebs-plugin
+        timeoutSeconds: 10
+      name: aws-node
       ports:
-      - containerPort: 9808
-        name: healthz
+      - containerPort: 61678
+        hostPort: 61678
+        name: metrics
         protocol: TCP
       readinessProbe:
+        exec:
+          command:
+          - /app/grpc-health-probe
+          - -addr=:50051
+          - -connect-timeout=5s
+          - -rpc-timeout=5s
         failureThreshold: 3
-        httpGet:
-          path: /healthz
-          port: healthz
-          scheme: HTTP
-        periodSeconds: 5
+        initialDelaySeconds: 1
+        periodSeconds: 10
         successThreshold: 1
-        timeoutSeconds: 3
+        timeoutSeconds: 10
       resources:
-        limits:
-          memory: 256Mi
         requests:
-          cpu: 10m
-          memory: 40Mi
+          cpu: 25m
       securityContext:
-        privileged: true
-        readOnlyRootFilesystem: true
+        capabilities:
+          add:
+          - NET_ADMIN
+          - NET_RAW
       terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
+      terminationMessagePolicy: File
       volumeMounts:
-      - mountPath: /var/lib/kubelet
-        mountPropagation: Bidirectional
-        name: kubelet-dir
-      - mountPath: /csi
-        name: plugin-dir
-      - mountPath: /dev
-        name: device-dir
+      - mountPath: /host/opt/cni/bin
+        name: cni-bin-dir
+      - mountPath: /host/etc/cni/net.d
+        name: cni-net-dir
+      - mountPath: /host/var/log/aws-routed-eni
+        name: log-dir
+      - mountPath: /var/run/aws-node
+        name: run-dir
+      - mountPath: /run/xtables.lock
+        name: xtables-lock
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-j9wgg
+        name: kube-api-access-8mwmz
         readOnly: true
     - args:
-      - --csi-address=$(ADDRESS)
-      - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
-      - --http-endpoint=0.0.0.0:9809
-      - --v=2
+      - --enable-ipv6=false
+      - --enable-network-policy=false
+      - --enable-cloudwatch-logs=false
+      - --enable-policy-event-logs=false
+      - --log-file=/var/log/aws-routed-eni/network-policy-agent.log
+      - --metrics-bind-addr=:8162
+      - --health-probe-bind-addr=:8163
+      - --conntrack-cache-cleanup-period=300
+      - --conntrack-cache-table-size=524288
+      - --log-level=debug
       env:
-      - name: ADDRESS
-        value: /csi/csi.sock
-      - name: DRIVER_REG_SOCK_PATH
-        value: /var/lib/kubelet/plugins/ebs.csi.aws.com/csi.sock
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-node-driver-registrar:v2.17.0-eksbuild.7
+      - name: MY_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon/aws-network-policy-agent:v1.4.0-eksbuild.1
       imagePullPolicy: IfNotPresent
-      livenessProbe:
-        failureThreshold: 3
-        httpGet:
-          path: /healthz
-          port: healthz-ndr
-          scheme: HTTP
-        initialDelaySeconds: 30
-        periodSeconds: 90
-        successThreshold: 1
-        timeoutSeconds: 15
-      name: node-driver-registrar
+      name: aws-eks-nodeagent
       ports:
-      - containerPort: 9809
-        name: healthz-ndr
+      - containerPort: 8162
+        hostPort: 8162
+        name: agentmetrics
         protocol: TCP
       resources:
-        limits:
-          memory: 32Mi
         requests:
-          cpu: 10m
-          memory: 32Mi
+          cpu: 25m
       securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
+        capabilities:
+          add:
+          - NET_ADMIN
+        privileged: true
       terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
+      terminationMessagePolicy: File
       volumeMounts:
-      - mountPath: /csi
-        name: plugin-dir
-      - mountPath: /registration
-        name: registration-dir
-      - mountPath: /var/lib/kubelet/plugins/ebs.csi.aws.com/
-        name: probe-dir
+      - mountPath: /host/opt/cni/bin
+        name: cni-bin-dir
+      - mountPath: /sys/fs/bpf
+        name: bpf-pin-path
+      - mountPath: /var/log/aws-routed-eni
+        name: log-dir
+      - mountPath: /var/run/aws-node
+        name: run-dir
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-j9wgg
-        readOnly: true
-    - args:
-      - --csi-address=/csi/csi.sock
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe:v2.19.0-eksbuild.7
-      imagePullPolicy: IfNotPresent
-      name: liveness-probe
-      resources:
-        limits:
-          memory: 32Mi
-        requests:
-          cpu: 10m
-          memory: 32Mi
-      securityContext:
-        allowPrivilegeEscalation: false
-        readOnlyRootFilesystem: true
-      terminationMessagePath: /dev/termination-log
-      terminationMessagePolicy: FallbackToLogsOnError
-      volumeMounts:
-      - mountPath: /csi
-        name: plugin-dir
-      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-j9wgg
+        name: kube-api-access-8mwmz
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: true
-    nodeName: ip-10-0-2-44.us-east-2.compute.internal
-    nodeSelector:
-      kubernetes.io/os: linux
+    hostNetwork: true
+    initContainers:
+    - env:
+      - name: DISABLE_TCP_EARLY_DEMUX
+        value: "false"
+      - name: ENABLE_IPv6
+        value: "false"
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni-init:v1.22.4-eksbuild.3
+      imagePullPolicy: IfNotPresent
+      name: aws-vpc-cni-init
+      resources:
+        requests:
+          cpu: 25m
+      securityContext:
+        privileged: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /host/opt/cni/bin
+        name: cni-bin-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8mwmz
+        readOnly: true
+    nodeName: ip-10-0-3-65.us-east-2.compute.internal
     preemptionPolicy: PreemptLowerPriority
     priority: 2000001000
     priorityClassName: system-node-critical
     restartPolicy: Always
     schedulerName: default-scheduler
-    securityContext:
-      fsGroup: 0
-      runAsGroup: 0
-      runAsNonRoot: false
-      runAsUser: 0
-    serviceAccount: ebs-csi-node-sa
-    serviceAccountName: ebs-csi-node-sa
-    terminationGracePeriodSeconds: 30
+    securityContext: {}
+    serviceAccount: aws-node
+    serviceAccountName: aws-node
+    terminationGracePeriodSeconds: 10
     tolerations:
     - operator: Exists
     - effect: NoExecute
@@ -4158,26 +2259,35 @@ items:
     - effect: NoSchedule
       key: node.kubernetes.io/unschedulable
       operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/network-unavailable
+      operator: Exists
     volumes:
     - hostPath:
-        path: /var/lib/kubelet
-        type: Directory
-      name: kubelet-dir
+        path: /sys/fs/bpf
+        type: ""
+      name: bpf-pin-path
     - hostPath:
-        path: /var/lib/kubelet/plugins/ebs.csi.aws.com/
+        path: /opt/cni/bin
+        type: ""
+      name: cni-bin-dir
+    - hostPath:
+        path: /etc/cni/net.d
+        type: ""
+      name: cni-net-dir
+    - hostPath:
+        path: /var/log/aws-routed-eni
         type: DirectoryOrCreate
-      name: plugin-dir
+      name: log-dir
     - hostPath:
-        path: /var/lib/kubelet/plugins_registry/
-        type: Directory
-      name: registration-dir
+        path: /var/run/aws-node
+        type: DirectoryOrCreate
+      name: run-dir
     - hostPath:
-        path: /dev
-        type: Directory
-      name: device-dir
-    - emptyDir: {}
-      name: probe-dir
-    - name: kube-api-access-j9wgg
+        path: /run/xtables.lock
+        type: FileOrCreate
+      name: xtables-lock
+    - name: kube-api-access-8mwmz
       projected:
         defaultMode: 420
         sources:
@@ -4198,27 +2308,1151 @@ items:
   status:
     conditions:
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:44Z"
+      lastTransitionTime: "2026-10-08T06:56:39Z"
+      observedGeneration: 1
       status: "True"
       type: PodReadyToStartContainers
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:06Z"
+      lastTransitionTime: "2026-10-08T06:56:44Z"
+      observedGeneration: 1
       status: "True"
       type: Initialized
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:47Z"
+      lastTransitionTime: "2026-10-08T06:56:49Z"
+      observedGeneration: 1
       status: "True"
       type: Ready
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:47Z"
+      lastTransitionTime: "2026-10-08T06:56:49Z"
+      observedGeneration: 1
       status: "True"
       type: ContainersReady
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:07Z"
+      lastTransitionTime: "2026-10-08T06:56:38Z"
+      observedGeneration: 1
       status: "True"
       type: PodScheduled
     containerStatuses:
-    - containerID: containerd://4883db040990fe76533d728cc316abd41f3e1593c21db6b1969c203c70a6b795
+    - allocatedResources:
+        cpu: 25m
+      containerID: containerd://48526760eea7d2395aee4432567cddf3a92096b89e9521433a07f0dfc4459c41
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon/aws-network-policy-agent:v1.4.0-eksbuild.1
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon/aws-network-policy-agent@sha256:c8555b6f2aed6d795a1637e0fe7f1f47cca2465354438157bdc8d8a6beb61045
+      lastState: {}
+      name: aws-eks-nodeagent
+      ready: true
+      resources:
+        requests:
+          cpu: 25m
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T06:56:48Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          uid: 0
+      volumeMounts:
+      - mountPath: /host/opt/cni/bin
+        name: cni-bin-dir
+      - mountPath: /sys/fs/bpf
+        name: bpf-pin-path
+      - mountPath: /var/log/aws-routed-eni
+        name: log-dir
+      - mountPath: /var/run/aws-node
+        name: run-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8mwmz
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - allocatedResources:
+        cpu: 25m
+      containerID: containerd://9e59774cdf43aa88b1be9eb76263d7217241ab07642a400fb20d5b40ef62cf6a
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni:v1.22.4-eksbuild.3
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni@sha256:7ba0bb50de053432467d1cc629dfc846de4e534f00b73828a1ff33fcee70c8e7
+      lastState: {}
+      name: aws-node
+      ready: true
+      resources:
+        requests:
+          cpu: 25m
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T06:56:46Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          uid: 0
+      volumeMounts:
+      - mountPath: /host/opt/cni/bin
+        name: cni-bin-dir
+      - mountPath: /host/etc/cni/net.d
+        name: cni-net-dir
+      - mountPath: /host/var/log/aws-routed-eni
+        name: log-dir
+      - mountPath: /var/run/aws-node
+        name: run-dir
+      - mountPath: /run/xtables.lock
+        name: xtables-lock
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8mwmz
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.0.3.65
+    hostIPs:
+    - ip: 10.0.3.65
+    initContainerStatuses:
+    - allocatedResources:
+        cpu: 25m
+      containerID: containerd://8152c29a75a9cde7ebdf36a7f74da4c0dc1db8ee806f827418f9f797a58df02e
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni-init:v1.22.4-eksbuild.3
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/amazon-k8s-cni-init@sha256:57866ee72791f6564a316a8e9ad5df0737200f64cbfcbf6ad4153b5bc80f4fb6
+      lastState: {}
+      name: aws-vpc-cni-init
+      ready: true
+      resources:
+        requests:
+          cpu: 25m
+      restartCount: 0
+      started: false
+      state:
+        terminated:
+          containerID: containerd://8152c29a75a9cde7ebdf36a7f74da4c0dc1db8ee806f827418f9f797a58df02e
+          exitCode: 0
+          finishedAt: "2026-10-08T06:56:43Z"
+          reason: Completed
+          startedAt: "2026-10-08T06:56:43Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          uid: 0
+      volumeMounts:
+      - mountPath: /host/opt/cni/bin
+        name: cni-bin-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8mwmz
+        readOnly: true
+        recursiveReadOnly: Disabled
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.0.3.65
+    podIPs:
+    - ip: 10.0.3.65
+    qosClass: Burstable
+    startTime: "2026-10-08T06:56:38Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-10-08T07:42:50Z"
+    generateName: coredns-66dbb7bd9d-
+    generation: 1
+    labels:
+      eks.amazonaws.com/component: coredns
+      k8s-app: kube-dns
+      pod-template-hash: 66dbb7bd9d
+      topology.kubernetes.io/region: us-east-2
+      topology.kubernetes.io/zone: us-east-2c
+    name: coredns-66dbb7bd9d-c8qfr
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: coredns-66dbb7bd9d
+      uid: 26c9ad71-3311-4777-9f6a-09683ce80355
+    resourceVersion: "1109075"
+    uid: b6255ef4-63a9-4cde-a2b5-212726b177d1
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - amd64
+              - arm64
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: k8s-app
+                operator: In
+                values:
+                - kube-dns
+            topologyKey: kubernetes.io/hostname
+          weight: 100
+    containers:
+    - args:
+      - -conf
+      - /etc/coredns/Corefile
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns:v1.11.4-eksbuild.53
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /health
+          port: 8080
+          scheme: HTTP
+        initialDelaySeconds: 60
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 5
+      name: coredns
+      ports:
+      - containerPort: 53
+        name: dns
+        protocol: UDP
+      - containerPort: 53
+        name: dns-tcp
+        protocol: TCP
+      - containerPort: 9153
+        name: metrics
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /ready
+          port: 8181
+          scheme: HTTP
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources:
+        limits:
+          memory: 170Mi
+        requests:
+          cpu: 100m
+          memory: 70Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          add:
+          - NET_BIND_SERVICE
+          drop:
+          - ALL
+        readOnlyRootFilesystem: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/coredns
+        name: config-volume
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-ms2cr
+        readOnly: true
+    dnsPolicy: Default
+    enableServiceLinks: true
+    nodeName: ip-10-0-3-65.us-east-2.compute.internal
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000000000
+    priorityClassName: system-cluster-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: coredns
+    serviceAccountName: coredns
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/control-plane
+    - key: CriticalAddonsOnly
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    topologySpreadConstraints:
+    - labelSelector:
+        matchLabels:
+          k8s-app: kube-dns
+      maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: ScheduleAnyway
+    volumes:
+    - configMap:
+        defaultMode: 420
+        items:
+        - key: Corefile
+          path: Corefile
+        name: coredns
+      name: config-volume
+    - name: kube-api-access-ms2cr
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:42:51Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:42:50Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:42:52Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:42:52Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:42:50Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - allocatedResources:
+        cpu: 100m
+        memory: 70Mi
+      containerID: containerd://53f9a2155b9e283467612bd610800c53fafcdd4aaad5db83ecd576a4c6621143
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns:v1.11.4-eksbuild.53
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns@sha256:ba66f10a4e152b09ecfcf413d61d87caa5357ca12acd5bac8383eb9b09359f69
+      lastState: {}
+      name: coredns
+      ready: true
+      resources:
+        limits:
+          memory: 170Mi
+        requests:
+          cpu: 100m
+          memory: 70Mi
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T07:42:52Z"
+      user:
+        linux:
+          gid: 65532
+          supplementalGroups:
+          - 65532
+          uid: 65532
+      volumeMounts:
+      - mountPath: /etc/coredns
+        name: config-volume
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-ms2cr
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.0.3.65
+    hostIPs:
+    - ip: 10.0.3.65
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.0.3.217
+    podIPs:
+    - ip: 10.0.3.217
+    qosClass: Burstable
+    startTime: "2026-10-08T07:42:50Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-10-08T07:47:07Z"
+    generateName: coredns-66dbb7bd9d-
+    generation: 1
+    labels:
+      eks.amazonaws.com/component: coredns
+      k8s-app: kube-dns
+      pod-template-hash: 66dbb7bd9d
+      topology.kubernetes.io/region: us-east-2
+      topology.kubernetes.io/zone: us-east-2a
+    name: coredns-66dbb7bd9d-q5g29
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: coredns-66dbb7bd9d
+      uid: 26c9ad71-3311-4777-9f6a-09683ce80355
+    resourceVersion: "1110270"
+    uid: 74a7a019-1b30-4f91-9f05-276455a04513
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: kubernetes.io/os
+              operator: In
+              values:
+              - linux
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+              - amd64
+              - arm64
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: k8s-app
+                operator: In
+                values:
+                - kube-dns
+            topologyKey: kubernetes.io/hostname
+          weight: 100
+    containers:
+    - args:
+      - -conf
+      - /etc/coredns/Corefile
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns:v1.11.4-eksbuild.53
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /health
+          port: 8080
+          scheme: HTTP
+        initialDelaySeconds: 60
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 5
+      name: coredns
+      ports:
+      - containerPort: 53
+        name: dns
+        protocol: UDP
+      - containerPort: 53
+        name: dns-tcp
+        protocol: TCP
+      - containerPort: 9153
+        name: metrics
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /ready
+          port: 8181
+          scheme: HTTP
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 1
+      resources:
+        limits:
+          memory: 170Mi
+        requests:
+          cpu: 100m
+          memory: 70Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          add:
+          - NET_BIND_SERVICE
+          drop:
+          - ALL
+        readOnlyRootFilesystem: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /etc/coredns
+        name: config-volume
+        readOnly: true
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8kdbc
+        readOnly: true
+    dnsPolicy: Default
+    enableServiceLinks: true
+    nodeName: ip-10-0-1-192.us-east-2.compute.internal
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000000000
+    priorityClassName: system-cluster-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: coredns
+    serviceAccountName: coredns
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/control-plane
+    - key: CriticalAddonsOnly
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    topologySpreadConstraints:
+    - labelSelector:
+        matchLabels:
+          k8s-app: kube-dns
+      maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: ScheduleAnyway
+    volumes:
+    - configMap:
+        defaultMode: 420
+        items:
+        - key: Corefile
+          path: Corefile
+        name: coredns
+      name: config-volume
+    - name: kube-api-access-8kdbc
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:47:09Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:47:07Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:47:11Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:47:11Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:47:07Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://644a79256b16f1930dfba4e7388a940d730322046360d0b09fbafa83501400b1
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns:v1.11.4-eksbuild.53
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/coredns@sha256:ba66f10a4e152b09ecfcf413d61d87caa5357ca12acd5bac8383eb9b09359f69
+      lastState: {}
+      name: coredns
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T07:47:10Z"
+      volumeMounts:
+      - mountPath: /etc/coredns
+        name: config-volume
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-8kdbc
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.0.1.192
+    hostIPs:
+    - ip: 10.0.1.192
+    phase: Running
+    podIP: 10.0.1.131
+    podIPs:
+    - ip: 10.0.1.131
+    qosClass: Burstable
+    startTime: "2026-10-08T07:47:07Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-10-08T07:53:09Z"
+    generateName: ebs-csi-controller-6cd47c6cd-
+    generation: 1
+    labels:
+      app: ebs-csi-controller
+      app.kubernetes.io/component: csi-driver
+      app.kubernetes.io/managed-by: EKS
+      app.kubernetes.io/name: aws-ebs-csi-driver
+      app.kubernetes.io/version: 1.66.0
+      pod-template-hash: 6cd47c6cd
+      topology.kubernetes.io/region: us-east-2
+      topology.kubernetes.io/zone: us-east-2b
+    name: ebs-csi-controller-6cd47c6cd-j5kmb
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: ebs-csi-controller-6cd47c6cd
+      uid: d927af6d-94c4-40bb-93d1-bf1509d3bccd
+    resourceVersion: "1112169"
+    uid: 106d266f-e58c-463b-a17c-7b19cdac2900
+  spec:
+    affinity:
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - preference:
+            matchExpressions:
+            - key: eks.amazonaws.com/compute-type
+              operator: NotIn
+              values:
+              - fargate
+              - auto
+              - hybrid
+          weight: 1
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - ebs-csi-controller
+            topologyKey: kubernetes.io/hostname
+          weight: 100
+    containers:
+    - args:
+      - controller
+      - --endpoint=$(CSI_ENDPOINT)
+      - --k8s-tag-cluster-id=etechapp-eks-25kmRfC1
+      - --batching=true
+      - --logging-format=text
+      - --user-agent-extra=eks
+      - --v=2
+      env:
+      - name: CSI_ENDPOINT
+        value: unix:///var/lib/csi/sockets/pluginproxy/csi.sock
+      - name: CSI_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: AWS_ACCESS_KEY_ID
+        valueFrom:
+          secretKeyRef:
+            key: key_id
+            name: aws-secret
+            optional: true
+      - name: AWS_SECRET_ACCESS_KEY
+        valueFrom:
+          secretKeyRef:
+            key: access_key
+            name: aws-secret
+            optional: true
+      - name: AWS_EC2_ENDPOINT
+        valueFrom:
+          configMapKeyRef:
+            key: endpoint
+            name: aws-meta
+            optional: true
+      - name: AWS_SAGEMAKER_ENDPOINT
+        valueFrom:
+          configMapKeyRef:
+            key: sagemaker_endpoint
+            name: aws-meta
+            optional: true
+      - name: AWS_REGION
+        value: us-east-2
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_ROLE_ARN
+        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
+      - name: AWS_WEB_IDENTITY_TOKEN_FILE
+        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver:v1.66.0
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 10
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 60
+      name: ebs-plugin
+      ports:
+      - containerPort: 9808
+        name: healthz
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 60
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 10m
+          memory: 40Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r2t2c
+        readOnly: true
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+    - args:
+      - --timeout=60s
+      - --csi-address=$(ADDRESS)
+      - --v=2
+      - --feature-gates=Topology=true
+      - --extra-create-metadata
+      - --leader-election=true
+      - --default-fstype=ext4
+      - --kube-api-qps=20
+      - --kube-api-burst=100
+      - --worker-threads=100
+      - --retry-interval-max=30m
+      env:
+      - name: ADDRESS
+        value: /var/lib/csi/sockets/pluginproxy/csi.sock
+      - name: ENABLE_VAC_FALLBACK
+        value: "true"
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_DEFAULT_REGION
+        value: us-east-2
+      - name: AWS_REGION
+        value: us-east-2
+      - name: AWS_ROLE_ARN
+        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
+      - name: AWS_WEB_IDENTITY_TOKEN_FILE
+        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-provisioner:v6.3.0-eksbuild.7
+      imagePullPolicy: IfNotPresent
+      name: csi-provisioner
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 10m
+          memory: 40Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r2t2c
+        readOnly: true
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+    - args:
+      - --timeout=6m
+      - --csi-address=$(ADDRESS)
+      - --v=2
+      - --leader-election=true
+      - --kube-api-qps=20
+      - --kube-api-burst=100
+      - --worker-threads=100
+      - --retry-interval-max=5m
+      env:
+      - name: ADDRESS
+        value: /var/lib/csi/sockets/pluginproxy/csi.sock
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_DEFAULT_REGION
+        value: us-east-2
+      - name: AWS_REGION
+        value: us-east-2
+      - name: AWS_ROLE_ARN
+        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
+      - name: AWS_WEB_IDENTITY_TOKEN_FILE
+        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-attacher:v4.12.0-eksbuild.8
+      imagePullPolicy: IfNotPresent
+      name: csi-attacher
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 10m
+          memory: 40Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r2t2c
+        readOnly: true
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+    - args:
+      - --csi-address=$(ADDRESS)
+      - --leader-election=true
+      - --v=2
+      - --extra-create-metadata
+      - --kube-api-qps=20
+      - --kube-api-burst=100
+      - --worker-threads=100
+      - --retry-interval-max=30m
+      env:
+      - name: ADDRESS
+        value: /var/lib/csi/sockets/pluginproxy/csi.sock
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_DEFAULT_REGION
+        value: us-east-2
+      - name: AWS_REGION
+        value: us-east-2
+      - name: AWS_ROLE_ARN
+        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
+      - name: AWS_WEB_IDENTITY_TOKEN_FILE
+        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-snapshotter:v8.6.0-eksbuild.8
+      imagePullPolicy: IfNotPresent
+      name: csi-snapshotter
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 10m
+          memory: 40Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r2t2c
+        readOnly: true
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+    - args:
+      - --timeout=60s
+      - --extra-modify-metadata
+      - --csi-address=$(ADDRESS)
+      - --v=2
+      - --handle-volume-inuse-error=false
+      - --leader-election=true
+      - --kube-api-qps=20
+      - --kube-api-burst=100
+      - --workers=100
+      - --retry-interval-max=30m
+      env:
+      - name: ADDRESS
+        value: /var/lib/csi/sockets/pluginproxy/csi.sock
+      - name: ENABLE_VAC_FALLBACK
+        value: "true"
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_DEFAULT_REGION
+        value: us-east-2
+      - name: AWS_REGION
+        value: us-east-2
+      - name: AWS_ROLE_ARN
+        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
+      - name: AWS_WEB_IDENTITY_TOKEN_FILE
+        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-resizer:v2.2.1-eksbuild.6
+      imagePullPolicy: IfNotPresent
+      name: csi-resizer
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 10m
+          memory: 40Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r2t2c
+        readOnly: true
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+    - args:
+      - --csi-address=/csi/csi.sock
+      - --probe-timeout=60s
+      env:
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_DEFAULT_REGION
+        value: us-east-2
+      - name: AWS_REGION
+        value: us-east-2
+      - name: AWS_ROLE_ARN
+        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
+      - name: AWS_WEB_IDENTITY_TOKEN_FILE
+        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe:v2.19.0-eksbuild.7
+      imagePullPolicy: IfNotPresent
+      name: liveness-probe
+      resources:
+        limits:
+          memory: 32Mi
+        requests:
+          cpu: 10m
+          memory: 32Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r2t2c
+        readOnly: true
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: ip-10-0-2-209.us-east-2.compute.internal
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000000000
+    priorityClassName: system-cluster-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000
+      runAsGroup: 1000
+      runAsNonRoot: true
+      runAsUser: 1000
+    serviceAccount: ebs-csi-controller-sa
+    serviceAccountName: ebs-csi-controller-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+    - effect: NoExecute
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: aws-iam-token
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            audience: sts.amazonaws.com
+            expirationSeconds: 86400
+            path: token
+    - emptyDir: {}
+      name: socket-dir
+    - name: kube-api-access-r2t2c
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:53:09Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:53:09Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:53:19Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:53:19Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:53:09Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://93a52bc331aa83723133b2ffe520230d841065c666ad38e79c621dfffdf1a3bb
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-attacher:v4.12.0-eksbuild.8
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-attacher@sha256:f12da9edb687581e282e7e2a9ad34fa3a542f6c23610d06820da0802291d76ff
+      lastState: {}
+      name: csi-attacher
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T07:53:13Z"
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r2t2c
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: containerd://6f44f53032f9bed039b8ce73aa6ac6b44ddbf90f014a457aa5746000e0a0d63b
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-provisioner:v6.3.0-eksbuild.7
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-provisioner@sha256:344672a6d3a794c1fb8eea8b586c66cac3f1936341aa9c8e222dcd85e7c039be
+      lastState: {}
+      name: csi-provisioner
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T07:53:11Z"
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r2t2c
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: containerd://c844975e15145473f765ef414904bbc2453d2262ac37af7fe08e25ca316a09c6
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-resizer:v2.2.1-eksbuild.6
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-resizer@sha256:3e9480a608a19f903541ab91e44b2c2e4da7b45dece01601630fc837425c2a81
+      lastState: {}
+      name: csi-resizer
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T07:53:17Z"
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r2t2c
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: containerd://b71abbdf533f91abd0c1fa7939748222b2443092aeed286cdd7dbeb65b1c0413
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-snapshotter:v8.6.0-eksbuild.8
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-snapshotter@sha256:1a0c4c40c14e632ab8fd1eba0e2d1363089bf11e4207461c4cc4285c81afceaf
+      lastState: {}
+      name: csi-snapshotter
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T07:53:15Z"
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-r2t2c
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: containerd://d8d14716975a54204d43a910f81ef62ca68b326eac9ead58cb21f8fc9db384cc
       image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver:v1.66.0
       imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver@sha256:e2564165048c1706a4c64a648d982c974bd07280ab27c7cce4b6c7906afb0c5d
       lastState: {}
@@ -4228,19 +3462,19 @@ items:
       started: true
       state:
         running:
-          startedAt: "2026-10-08T04:26:44Z"
+          startedAt: "2026-10-08T07:53:09Z"
       volumeMounts:
-      - mountPath: /var/lib/kubelet
-        name: kubelet-dir
-      - mountPath: /csi
-        name: plugin-dir
-      - mountPath: /dev
-        name: device-dir
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-j9wgg
+        name: kube-api-access-r2t2c
         readOnly: true
         recursiveReadOnly: Disabled
-    - containerID: containerd://35ec4209092235df583af54c4cc1220d850e59ed79a42f9bd8fc5b3fbaaa2e84
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: containerd://ae611379baf2a37493f896b05a548a3fd8dbd8d28ec34e7b8d22c0ce65f4a59f
       image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe:v2.19.0-eksbuild.7
       imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe@sha256:2ec65c594fe3283d4376697a8c05a832391d5e4403bc5142617cb9d7004d54c5
       lastState: {}
@@ -4250,45 +3484,626 @@ items:
       started: true
       state:
         running:
-          startedAt: "2026-10-08T04:26:46Z"
+          startedAt: "2026-10-08T07:53:17Z"
       volumeMounts:
       - mountPath: /csi
-        name: plugin-dir
+        name: socket-dir
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-j9wgg
+        name: kube-api-access-r2t2c
         readOnly: true
         recursiveReadOnly: Disabled
-    - containerID: containerd://1f1d95c12e22b06d0a0223f9882547301ca1ed2b060eb3e92040708e360b1e03
-      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-node-driver-registrar:v2.17.0-eksbuild.7
-      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-node-driver-registrar@sha256:8222182e244554a46ac820b6e99a841b4b50c43e6524ea55e3669462564cc0a1
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.0.2.209
+    hostIPs:
+    - ip: 10.0.2.209
+    phase: Running
+    podIP: 10.0.2.68
+    podIPs:
+    - ip: 10.0.2.68
+    qosClass: Burstable
+    startTime: "2026-10-08T07:53:09Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2026-10-08T07:56:04Z"
+    generateName: ebs-csi-controller-6cd47c6cd-
+    generation: 1
+    labels:
+      app: ebs-csi-controller
+      app.kubernetes.io/component: csi-driver
+      app.kubernetes.io/managed-by: EKS
+      app.kubernetes.io/name: aws-ebs-csi-driver
+      app.kubernetes.io/version: 1.66.0
+      pod-template-hash: 6cd47c6cd
+      topology.kubernetes.io/region: us-east-2
+      topology.kubernetes.io/zone: us-east-2a
+    name: ebs-csi-controller-6cd47c6cd-r2zln
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: ebs-csi-controller-6cd47c6cd
+      uid: d927af6d-94c4-40bb-93d1-bf1509d3bccd
+    resourceVersion: "1113027"
+    uid: d599b651-e43a-4e1b-99ff-6fc077a5702e
+  spec:
+    affinity:
+      nodeAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - preference:
+            matchExpressions:
+            - key: eks.amazonaws.com/compute-type
+              operator: NotIn
+              values:
+              - fargate
+              - auto
+              - hybrid
+          weight: 1
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - ebs-csi-controller
+            topologyKey: kubernetes.io/hostname
+          weight: 100
+    containers:
+    - args:
+      - controller
+      - --endpoint=$(CSI_ENDPOINT)
+      - --k8s-tag-cluster-id=etechapp-eks-25kmRfC1
+      - --batching=true
+      - --logging-format=text
+      - --user-agent-extra=eks
+      - --v=2
+      env:
+      - name: CSI_ENDPOINT
+        value: unix:///var/lib/csi/sockets/pluginproxy/csi.sock
+      - name: CSI_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      - name: AWS_ACCESS_KEY_ID
+        valueFrom:
+          secretKeyRef:
+            key: key_id
+            name: aws-secret
+            optional: true
+      - name: AWS_SECRET_ACCESS_KEY
+        valueFrom:
+          secretKeyRef:
+            key: access_key
+            name: aws-secret
+            optional: true
+      - name: AWS_EC2_ENDPOINT
+        valueFrom:
+          configMapKeyRef:
+            key: endpoint
+            name: aws-meta
+            optional: true
+      - name: AWS_SAGEMAKER_ENDPOINT
+        valueFrom:
+          configMapKeyRef:
+            key: sagemaker_endpoint
+            name: aws-meta
+            optional: true
+      - name: AWS_REGION
+        value: us-east-2
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_ROLE_ARN
+        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
+      - name: AWS_WEB_IDENTITY_TOKEN_FILE
+        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver:v1.66.0
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 10
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 60
+      name: ebs-plugin
+      ports:
+      - containerPort: 9808
+        name: healthz
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 60
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 10m
+          memory: 40Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5nt84
+        readOnly: true
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+    - args:
+      - --timeout=60s
+      - --csi-address=$(ADDRESS)
+      - --v=2
+      - --feature-gates=Topology=true
+      - --extra-create-metadata
+      - --leader-election=true
+      - --default-fstype=ext4
+      - --kube-api-qps=20
+      - --kube-api-burst=100
+      - --worker-threads=100
+      - --retry-interval-max=30m
+      env:
+      - name: ADDRESS
+        value: /var/lib/csi/sockets/pluginproxy/csi.sock
+      - name: ENABLE_VAC_FALLBACK
+        value: "true"
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_DEFAULT_REGION
+        value: us-east-2
+      - name: AWS_REGION
+        value: us-east-2
+      - name: AWS_ROLE_ARN
+        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
+      - name: AWS_WEB_IDENTITY_TOKEN_FILE
+        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-provisioner:v6.3.0-eksbuild.7
+      imagePullPolicy: IfNotPresent
+      name: csi-provisioner
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 10m
+          memory: 40Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5nt84
+        readOnly: true
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+    - args:
+      - --timeout=6m
+      - --csi-address=$(ADDRESS)
+      - --v=2
+      - --leader-election=true
+      - --kube-api-qps=20
+      - --kube-api-burst=100
+      - --worker-threads=100
+      - --retry-interval-max=5m
+      env:
+      - name: ADDRESS
+        value: /var/lib/csi/sockets/pluginproxy/csi.sock
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_DEFAULT_REGION
+        value: us-east-2
+      - name: AWS_REGION
+        value: us-east-2
+      - name: AWS_ROLE_ARN
+        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
+      - name: AWS_WEB_IDENTITY_TOKEN_FILE
+        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-attacher:v4.12.0-eksbuild.8
+      imagePullPolicy: IfNotPresent
+      name: csi-attacher
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 10m
+          memory: 40Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5nt84
+        readOnly: true
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+    - args:
+      - --csi-address=$(ADDRESS)
+      - --leader-election=true
+      - --v=2
+      - --extra-create-metadata
+      - --kube-api-qps=20
+      - --kube-api-burst=100
+      - --worker-threads=100
+      - --retry-interval-max=30m
+      env:
+      - name: ADDRESS
+        value: /var/lib/csi/sockets/pluginproxy/csi.sock
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_DEFAULT_REGION
+        value: us-east-2
+      - name: AWS_REGION
+        value: us-east-2
+      - name: AWS_ROLE_ARN
+        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
+      - name: AWS_WEB_IDENTITY_TOKEN_FILE
+        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-snapshotter:v8.6.0-eksbuild.8
+      imagePullPolicy: IfNotPresent
+      name: csi-snapshotter
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 10m
+          memory: 40Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5nt84
+        readOnly: true
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+    - args:
+      - --timeout=60s
+      - --extra-modify-metadata
+      - --csi-address=$(ADDRESS)
+      - --v=2
+      - --handle-volume-inuse-error=false
+      - --leader-election=true
+      - --kube-api-qps=20
+      - --kube-api-burst=100
+      - --workers=100
+      - --retry-interval-max=30m
+      env:
+      - name: ADDRESS
+        value: /var/lib/csi/sockets/pluginproxy/csi.sock
+      - name: ENABLE_VAC_FALLBACK
+        value: "true"
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_DEFAULT_REGION
+        value: us-east-2
+      - name: AWS_REGION
+        value: us-east-2
+      - name: AWS_ROLE_ARN
+        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
+      - name: AWS_WEB_IDENTITY_TOKEN_FILE
+        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-resizer:v2.2.1-eksbuild.6
+      imagePullPolicy: IfNotPresent
+      name: csi-resizer
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 10m
+          memory: 40Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+        seccompProfile:
+          type: RuntimeDefault
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5nt84
+        readOnly: true
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+    - args:
+      - --csi-address=/csi/csi.sock
+      - --probe-timeout=60s
+      env:
+      - name: AWS_STS_REGIONAL_ENDPOINTS
+        value: regional
+      - name: AWS_DEFAULT_REGION
+        value: us-east-2
+      - name: AWS_REGION
+        value: us-east-2
+      - name: AWS_ROLE_ARN
+        value: arn:aws:iam::124666675812:role/AmazonEKSTFEBSCSIRole-etechapp-eks-25kmRfC1
+      - name: AWS_WEB_IDENTITY_TOKEN_FILE
+        value: /var/run/secrets/eks.amazonaws.com/serviceaccount/token
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe:v2.19.0-eksbuild.7
+      imagePullPolicy: IfNotPresent
+      name: liveness-probe
+      resources:
+        limits:
+          memory: 32Mi
+        requests:
+          cpu: 10m
+          memory: 32Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5nt84
+        readOnly: true
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: ip-10-0-1-192.us-east-2.compute.internal
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000000000
+    priorityClassName: system-cluster-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 1000
+      runAsGroup: 1000
+      runAsNonRoot: true
+      runAsUser: 1000
+    serviceAccount: ebs-csi-controller-sa
+    serviceAccountName: ebs-csi-controller-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - key: CriticalAddonsOnly
+      operator: Exists
+    - effect: NoExecute
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: aws-iam-token
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            audience: sts.amazonaws.com
+            expirationSeconds: 86400
+            path: token
+    - emptyDir: {}
+      name: socket-dir
+    - name: kube-api-access-5nt84
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:56:05Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:56:04Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:56:24Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:56:24Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T07:56:04Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: containerd://0303817ddd83064e84733b1c58ae756809eed79df8a055abb6f0452e80a3845e
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-attacher:v4.12.0-eksbuild.8
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-attacher@sha256:f12da9edb687581e282e7e2a9ad34fa3a542f6c23610d06820da0802291d76ff
       lastState: {}
-      name: node-driver-registrar
+      name: csi-attacher
       ready: true
       restartCount: 0
       started: true
       state:
         running:
-          startedAt: "2026-10-08T04:26:46Z"
+          startedAt: "2026-10-08T07:56:09Z"
       volumeMounts:
-      - mountPath: /csi
-        name: plugin-dir
-      - mountPath: /registration
-        name: registration-dir
-      - mountPath: /var/lib/kubelet/plugins/ebs.csi.aws.com/
-        name: probe-dir
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-j9wgg
+        name: kube-api-access-5nt84
         readOnly: true
         recursiveReadOnly: Disabled
-    hostIP: 10.0.2.44
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: containerd://dc7237b1a83b84990a86973bc940eeac302c9c3acc9de0191318573d9cf38a61
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-provisioner:v6.3.0-eksbuild.7
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-provisioner@sha256:344672a6d3a794c1fb8eea8b586c66cac3f1936341aa9c8e222dcd85e7c039be
+      lastState: {}
+      name: csi-provisioner
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T07:56:07Z"
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5nt84
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: containerd://b0196aa1ff5e50155ea92fdae115a515967ce290dd6bb99eaa8e3b4041ffb339
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-resizer:v2.2.1-eksbuild.6
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-resizer@sha256:3e9480a608a19f903541ab91e44b2c2e4da7b45dece01601630fc837425c2a81
+      lastState: {}
+      name: csi-resizer
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T07:56:12Z"
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5nt84
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: containerd://cd63f082f2202dd634fd63963836a2a577078297cae4cf0b6069c7c28864a093
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-snapshotter:v8.6.0-eksbuild.8
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-snapshotter@sha256:1a0c4c40c14e632ab8fd1eba0e2d1363089bf11e4207461c4cc4285c81afceaf
+      lastState: {}
+      name: csi-snapshotter
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T07:56:11Z"
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5nt84
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: containerd://cc998d83bff3c1dc8428efd471ad63527eaca4e6b0d5bb6efe0cdea6e3194633
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver:v1.66.0
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver@sha256:e2564165048c1706a4c64a648d982c974bd07280ab27c7cce4b6c7906afb0c5d
+      lastState: {}
+      name: ebs-plugin
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T07:56:05Z"
+      volumeMounts:
+      - mountPath: /var/lib/csi/sockets/pluginproxy/
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5nt84
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - containerID: containerd://cbce6c6291fbe9f067c45c2c46209b887054ce045edd70d957e74e8896e3ed10
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe:v2.19.0-eksbuild.7
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe@sha256:2ec65c594fe3283d4376697a8c05a832391d5e4403bc5142617cb9d7004d54c5
+      lastState: {}
+      name: liveness-probe
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T07:56:12Z"
+      volumeMounts:
+      - mountPath: /csi
+        name: socket-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-5nt84
+        readOnly: true
+        recursiveReadOnly: Disabled
+      - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
+        name: aws-iam-token
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.0.1.192
     hostIPs:
-    - ip: 10.0.2.44
+    - ip: 10.0.1.192
     phase: Running
-    podIP: 10.0.2.186
+    podIP: 10.0.1.251
     podIPs:
-    - ip: 10.0.2.186
+    - ip: 10.0.1.251
     qosClass: Burstable
-    startTime: "2026-10-08T04:26:06Z"
+    startTime: "2026-10-08T07:56:04Z"
 - apiVersion: v1
   kind: Pod
   metadata:
@@ -4978,6 +4793,400 @@ items:
 - apiVersion: v1
   kind: Pod
   metadata:
+    creationTimestamp: "2026-10-08T06:56:38Z"
+    generateName: ebs-csi-node-
+    generation: 1
+    labels:
+      app: ebs-csi-node
+      app.kubernetes.io/component: csi-driver
+      app.kubernetes.io/managed-by: EKS
+      app.kubernetes.io/name: aws-ebs-csi-driver
+      app.kubernetes.io/version: 1.66.0
+      controller-revision-hash: cc498ff6d
+      pod-template-generation: "1"
+    name: ebs-csi-node-z6t9g
+    namespace: kube-system
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: DaemonSet
+      name: ebs-csi-node
+      uid: fa6a84a0-912b-4b93-9951-214475a1bd98
+    resourceVersion: "1095724"
+    uid: 93da582e-fd0a-4304-aa57-21535eaecf40
+  spec:
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchFields:
+            - key: metadata.name
+              operator: In
+              values:
+              - ip-10-0-3-65.us-east-2.compute.internal
+    containers:
+    - args:
+      - node
+      - --endpoint=$(CSI_ENDPOINT)
+      - --csi-mount-point-prefix=/var/lib/kubelet/plugins/kubernetes.io/csi/ebs.csi.aws.com/
+      - --logging-format=text
+      - --v=2
+      env:
+      - name: CSI_ENDPOINT
+        value: unix:/csi/csi.sock
+      - name: CSI_NODE_NAME
+        valueFrom:
+          fieldRef:
+            apiVersion: v1
+            fieldPath: spec.nodeName
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver:v1.66.0
+      imagePullPolicy: IfNotPresent
+      lifecycle:
+        preStop:
+          exec:
+            command:
+            - /bin/aws-ebs-csi-driver
+            - pre-stop-hook
+      livenessProbe:
+        failureThreshold: 5
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        initialDelaySeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        timeoutSeconds: 3
+      name: ebs-plugin
+      ports:
+      - containerPort: 9808
+        name: healthz
+        protocol: TCP
+      readinessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /healthz
+          port: healthz
+          scheme: HTTP
+        periodSeconds: 5
+        successThreshold: 1
+        timeoutSeconds: 3
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 10m
+          memory: 40Mi
+      securityContext:
+        privileged: true
+        readOnlyRootFilesystem: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /var/lib/kubelet
+        mountPropagation: Bidirectional
+        name: kubelet-dir
+      - mountPath: /csi
+        name: plugin-dir
+      - mountPath: /dev
+        name: device-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-gz9qt
+        readOnly: true
+    - args:
+      - --csi-address=$(ADDRESS)
+      - --kubelet-registration-path=$(DRIVER_REG_SOCK_PATH)
+      - --http-endpoint=0.0.0.0:9809
+      - --v=2
+      env:
+      - name: ADDRESS
+        value: /csi/csi.sock
+      - name: DRIVER_REG_SOCK_PATH
+        value: /var/lib/kubelet/plugins/ebs.csi.aws.com/csi.sock
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-node-driver-registrar:v2.17.0-eksbuild.7
+      imagePullPolicy: IfNotPresent
+      livenessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /healthz
+          port: healthz-ndr
+          scheme: HTTP
+        initialDelaySeconds: 30
+        periodSeconds: 90
+        successThreshold: 1
+        timeoutSeconds: 15
+      name: node-driver-registrar
+      ports:
+      - containerPort: 9809
+        name: healthz-ndr
+        protocol: TCP
+      resources:
+        limits:
+          memory: 32Mi
+        requests:
+          cpu: 10m
+          memory: 32Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /csi
+        name: plugin-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/lib/kubelet/plugins/ebs.csi.aws.com/
+        name: probe-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-gz9qt
+        readOnly: true
+    - args:
+      - --csi-address=/csi/csi.sock
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe:v2.19.0-eksbuild.7
+      imagePullPolicy: IfNotPresent
+      name: liveness-probe
+      resources:
+        limits:
+          memory: 32Mi
+        requests:
+          cpu: 10m
+          memory: 32Mi
+      securityContext:
+        allowPrivilegeEscalation: false
+        readOnlyRootFilesystem: true
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: FallbackToLogsOnError
+      volumeMounts:
+      - mountPath: /csi
+        name: plugin-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-gz9qt
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: ip-10-0-3-65.us-east-2.compute.internal
+    nodeSelector:
+      kubernetes.io/os: linux
+    preemptionPolicy: PreemptLowerPriority
+    priority: 2000001000
+    priorityClassName: system-node-critical
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext:
+      fsGroup: 0
+      runAsGroup: 0
+      runAsNonRoot: false
+      runAsUser: 0
+    serviceAccount: ebs-csi-node-sa
+    serviceAccountName: ebs-csi-node-sa
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/disk-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/memory-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/pid-pressure
+      operator: Exists
+    - effect: NoSchedule
+      key: node.kubernetes.io/unschedulable
+      operator: Exists
+    volumes:
+    - hostPath:
+        path: /var/lib/kubelet
+        type: Directory
+      name: kubelet-dir
+    - hostPath:
+        path: /var/lib/kubelet/plugins/ebs.csi.aws.com/
+        type: DirectoryOrCreate
+      name: plugin-dir
+    - hostPath:
+        path: /var/lib/kubelet/plugins_registry/
+        type: Directory
+      name: registration-dir
+    - hostPath:
+        path: /dev
+        type: Directory
+      name: device-dir
+    - emptyDir: {}
+      name: probe-dir
+    - name: kube-api-access-gz9qt
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T06:56:49Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T06:56:38Z"
+      observedGeneration: 1
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T06:56:53Z"
+      observedGeneration: 1
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T06:56:53Z"
+      observedGeneration: 1
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2026-10-08T06:56:38Z"
+      observedGeneration: 1
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - allocatedResources:
+        cpu: 10m
+        memory: 40Mi
+      containerID: containerd://6f5d59628da690d11c7cd5430902c0e7decd153d4112ce695d0c63b1b8430cf2
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver:v1.66.0
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/aws-ebs-csi-driver@sha256:e2564165048c1706a4c64a648d982c974bd07280ab27c7cce4b6c7906afb0c5d
+      lastState: {}
+      name: ebs-plugin
+      ready: true
+      resources:
+        limits:
+          memory: 256Mi
+        requests:
+          cpu: 10m
+          memory: 40Mi
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T06:56:51Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          uid: 0
+      volumeMounts:
+      - mountPath: /var/lib/kubelet
+        name: kubelet-dir
+      - mountPath: /csi
+        name: plugin-dir
+      - mountPath: /dev
+        name: device-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-gz9qt
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - allocatedResources:
+        cpu: 10m
+        memory: 32Mi
+      containerID: containerd://4ccb5331a380ecbdd03a85b9ab75f2a3ec56e09dc543d2059b70f0152aad82a9
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe:v2.19.0-eksbuild.7
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/livenessprobe@sha256:2ec65c594fe3283d4376697a8c05a832391d5e4403bc5142617cb9d7004d54c5
+      lastState: {}
+      name: liveness-probe
+      ready: true
+      resources:
+        limits:
+          memory: 32Mi
+        requests:
+          cpu: 10m
+          memory: 32Mi
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T06:56:53Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          uid: 0
+      volumeMounts:
+      - mountPath: /csi
+        name: plugin-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-gz9qt
+        readOnly: true
+        recursiveReadOnly: Disabled
+    - allocatedResources:
+        cpu: 10m
+        memory: 32Mi
+      containerID: containerd://25a3aeffac268c563ee36759e8d88b429b7a3f1accb6e847921df22adcbaa7b4
+      image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-node-driver-registrar:v2.17.0-eksbuild.7
+      imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/csi-node-driver-registrar@sha256:8222182e244554a46ac820b6e99a841b4b50c43e6524ea55e3669462564cc0a1
+      lastState: {}
+      name: node-driver-registrar
+      ready: true
+      resources:
+        limits:
+          memory: 32Mi
+        requests:
+          cpu: 10m
+          memory: 32Mi
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2026-10-08T06:56:52Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          uid: 0
+      volumeMounts:
+      - mountPath: /csi
+        name: plugin-dir
+      - mountPath: /registration
+        name: registration-dir
+      - mountPath: /var/lib/kubelet/plugins/ebs.csi.aws.com/
+        name: probe-dir
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-gz9qt
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 10.0.3.65
+    hostIPs:
+    - ip: 10.0.3.65
+    observedGeneration: 1
+    phase: Running
+    podIP: 10.0.3.247
+    podIPs:
+    - ip: 10.0.3.247
+    qosClass: Burstable
+    startTime: "2026-10-08T06:56:38Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
     creationTimestamp: "2026-10-08T04:28:10Z"
     generateName: kube-proxy-
     generation: 1
@@ -5181,14 +5390,14 @@ items:
 - apiVersion: v1
   kind: Pod
   metadata:
-    creationTimestamp: "2026-10-08T04:26:07Z"
+    creationTimestamp: "2026-10-08T06:56:38Z"
     generateName: kube-proxy-
     generation: 1
     labels:
-      controller-revision-hash: d5b9c4b94
+      controller-revision-hash: 66fcbff554
       k8s-app: kube-proxy
       pod-template-generation: "1"
-    name: kube-proxy-k962p
+    name: kube-proxy-mbzqg
     namespace: kube-system
     ownerReferences:
     - apiVersion: apps/v1
@@ -5197,8 +5406,8 @@ items:
       kind: DaemonSet
       name: kube-proxy
       uid: e652b0c3-5ab9-43bd-8535-4fd69b7a3148
-    resourceVersion: "1060515"
-    uid: 434c0cf7-e799-47ac-a0db-2e221921a565
+    resourceVersion: "1095503"
+    uid: 43113fba-bea8-465f-9dee-318e0d41af66
   spec:
     affinity:
       nodeAffinity:
@@ -5208,7 +5417,7 @@ items:
             - key: metadata.name
               operator: In
               values:
-              - ip-10-0-2-44.us-east-2.compute.internal
+              - ip-10-0-3-65.us-east-2.compute.internal
     containers:
     - command:
       - kube-proxy
@@ -5244,12 +5453,12 @@ items:
       - mountPath: /var/lib/kube-proxy-config/
         name: config
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-6zf2x
+        name: kube-api-access-hr2dq
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: true
     hostNetwork: true
-    nodeName: ip-10-0-2-44.us-east-2.compute.internal
+    nodeName: ip-10-0-3-65.us-east-2.compute.internal
     preemptionPolicy: PreemptLowerPriority
     priority: 2000001000
     priorityClassName: system-node-critical
@@ -5303,7 +5512,7 @@ items:
         defaultMode: 420
         name: kube-proxy-config
       name: config
-    - name: kube-api-access-6zf2x
+    - name: kube-api-access-hr2dq
       projected:
         defaultMode: 420
         sources:
@@ -5324,37 +5533,53 @@ items:
   status:
     conditions:
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:07Z"
+      lastTransitionTime: "2026-10-08T06:56:39Z"
+      observedGeneration: 1
       status: "True"
       type: PodReadyToStartContainers
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:06Z"
+      lastTransitionTime: "2026-10-08T06:56:38Z"
+      observedGeneration: 1
       status: "True"
       type: Initialized
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:11Z"
+      lastTransitionTime: "2026-10-08T06:56:43Z"
+      observedGeneration: 1
       status: "True"
       type: Ready
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:11Z"
+      lastTransitionTime: "2026-10-08T06:56:43Z"
+      observedGeneration: 1
       status: "True"
       type: ContainersReady
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:07Z"
+      lastTransitionTime: "2026-10-08T06:56:38Z"
+      observedGeneration: 1
       status: "True"
       type: PodScheduled
     containerStatuses:
-    - containerID: containerd://48a6414c8936578bab0c295b4ff2765decc71a9def674f19b7fb10f227e84afb
+    - allocatedResources:
+        cpu: 100m
+      containerID: containerd://181f554a5e47ac58ff817eac950ff05ff074f1f913a70669b9c3d6266ed15b63
       image: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/kube-proxy:v1.32.13-eksbuild.28
       imageID: 602401143452.dkr.ecr.us-east-2.amazonaws.com/eks/kube-proxy@sha256:7e86e894c21ac53336c2fabc645b66a13159d276c7da4fd0f7b652ff64b1cc88
       lastState: {}
       name: kube-proxy
       ready: true
+      resources:
+        requests:
+          cpu: 100m
       restartCount: 0
       started: true
       state:
         running:
-          startedAt: "2026-10-08T04:26:11Z"
+          startedAt: "2026-10-08T06:56:43Z"
+      user:
+        linux:
+          gid: 0
+          supplementalGroups:
+          - 0
+          uid: 0
       volumeMounts:
       - mountPath: /var/log
         name: varlog
@@ -5369,18 +5594,19 @@ items:
       - mountPath: /var/lib/kube-proxy-config/
         name: config
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-6zf2x
+        name: kube-api-access-hr2dq
         readOnly: true
         recursiveReadOnly: Disabled
-    hostIP: 10.0.2.44
+    hostIP: 10.0.3.65
     hostIPs:
-    - ip: 10.0.2.44
+    - ip: 10.0.3.65
+    observedGeneration: 1
     phase: Running
-    podIP: 10.0.2.44
+    podIP: 10.0.3.65
     podIPs:
-    - ip: 10.0.2.44
+    - ip: 10.0.3.65
     qosClass: Burstable
-    startTime: "2026-10-08T04:26:06Z"
+    startTime: "2026-10-08T06:56:38Z"
 - apiVersion: v1
   kind: Pod
   metadata:
@@ -5589,14 +5815,16 @@ items:
   metadata:
     annotations:
       kubectl.kubernetes.io/default-container: manager
-    creationTimestamp: "2026-10-07T22:07:34Z"
+    creationTimestamp: "2026-10-08T07:56:04Z"
     generateName: opentelemetry-operator-65bc895cf9-
     generation: 1
     labels:
       app.kubernetes.io/name: opentelemetry-operator
       control-plane: controller-manager
       pod-template-hash: 65bc895cf9
-    name: opentelemetry-operator-65bc895cf9-qt8dc
+      topology.kubernetes.io/region: us-east-2
+      topology.kubernetes.io/zone: us-east-2c
+    name: opentelemetry-operator-65bc895cf9-krrb4
     namespace: opentelemetry-operator-system
     ownerReferences:
     - apiVersion: apps/v1
@@ -5605,8 +5833,8 @@ items:
       kind: ReplicaSet
       name: opentelemetry-operator-65bc895cf9
       uid: fb531759-3e91-49b2-899d-459a1b587aeb
-    resourceVersion: "1060868"
-    uid: 50a4f5d9-49e1-41f7-adc8-ab63a1ffe7bc
+    resourceVersion: "1112995"
+    uid: 4595ba93-ab8c-490e-81c2-16e5e2d7d0c9
   spec:
     automountServiceAccountToken: true
     containers:
@@ -5691,14 +5919,14 @@ items:
         name: cert
         readOnly: true
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-tqvrw
+        name: kube-api-access-xb8w5
         readOnly: true
       - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
         name: aws-iam-token
         readOnly: true
     dnsPolicy: ClusterFirst
     enableServiceLinks: true
-    nodeName: ip-10-0-2-44.us-east-2.compute.internal
+    nodeName: ip-10-0-3-65.us-east-2.compute.internal
     nodeSelector:
       kubernetes.io/os: linux
     preemptionPolicy: PreemptLowerPriority
@@ -5735,7 +5963,7 @@ items:
       secret:
         defaultMode: 420
         secretName: opentelemetry-operator-controller-manager-service-cert
-    - name: kube-api-access-tqvrw
+    - name: kube-api-access-xb8w5
       projected:
         defaultMode: 420
         sources:
@@ -5756,59 +5984,72 @@ items:
   status:
     conditions:
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:42Z"
+      lastTransitionTime: "2026-10-08T07:56:05Z"
+      observedGeneration: 1
       status: "True"
       type: PodReadyToStartContainers
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
+      lastTransitionTime: "2026-10-08T07:56:04Z"
+      observedGeneration: 1
       status: "True"
       type: Initialized
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:56Z"
+      lastTransitionTime: "2026-10-08T07:56:18Z"
+      observedGeneration: 1
       status: "True"
       type: Ready
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:56Z"
+      lastTransitionTime: "2026-10-08T07:56:18Z"
+      observedGeneration: 1
       status: "True"
       type: ContainersReady
     - lastProbeTime: null
-      lastTransitionTime: "2026-10-08T04:26:17Z"
+      lastTransitionTime: "2026-10-08T07:56:04Z"
+      observedGeneration: 1
       status: "True"
       type: PodScheduled
     containerStatuses:
-    - containerID: containerd://ba5e16eb6c181b7d047cf274462495e1cf9053888bbb03514c579f9b15f085be
+    - containerID: containerd://fcbb88358258319e31227d5cebc7453f133e94a304ab05334b4871da29d0c6d5
       image: public.ecr.aws/aws-observability/adot-operator:0.156.0
       imageID: public.ecr.aws/aws-observability/adot-operator@sha256:55ba25d4c0bdc471edd1a3b78e83b418a3cc5a8a38200c5e97cef12a880537f2
       lastState: {}
       name: manager
       ready: true
+      resources: {}
       restartCount: 0
       started: true
       state:
         running:
-          startedAt: "2026-10-08T04:26:44Z"
+          startedAt: "2026-10-08T07:56:06Z"
+      user:
+        linux:
+          gid: 65532
+          supplementalGroups:
+          - 65532
+          uid: 65532
       volumeMounts:
       - mountPath: /tmp/k8s-webhook-server/serving-certs
         name: cert
         readOnly: true
         recursiveReadOnly: Disabled
       - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
-        name: kube-api-access-tqvrw
+        name: kube-api-access-xb8w5
         readOnly: true
         recursiveReadOnly: Disabled
       - mountPath: /var/run/secrets/eks.amazonaws.com/serviceaccount
         name: aws-iam-token
         readOnly: true
         recursiveReadOnly: Disabled
-    hostIP: 10.0.2.44
+    hostIP: 10.0.3.65
     hostIPs:
-    - ip: 10.0.2.44
+    - ip: 10.0.3.65
+    observedGeneration: 1
     phase: Running
-    podIP: 10.0.2.23
+    podIP: 10.0.3.171
     podIPs:
-    - ip: 10.0.2.23
+    - ip: 10.0.3.171
     qosClass: BestEffort
-    startTime: "2026-10-08T04:26:17Z"
+    startTime: "2026-10-08T07:56:04Z"
 - apiVersion: v1
   kind: Service
   metadata:
@@ -6183,7 +6424,7 @@ items:
       k8s-app: aws-node
     name: aws-node
     namespace: kube-system
-    resourceVersion: "1061390"
+    resourceVersion: "1113602"
     uid: 7d5ac1f8-f1d4-4063-b412-573ca0d07037
   spec:
     revisionHistoryLimit: 10
@@ -6192,7 +6433,6 @@ items:
         k8s-app: aws-node
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app.kubernetes.io/instance: aws-vpc-cni
           app.kubernetes.io/name: aws-node
@@ -6463,7 +6703,7 @@ items:
       app.kubernetes.io/version: 1.66.0
     name: ebs-csi-node
     namespace: kube-system
-    resourceVersion: "1061466"
+    resourceVersion: "1113606"
     uid: fa6a84a0-912b-4b93-9951-214475a1bd98
   spec:
     revisionHistoryLimit: 10
@@ -6473,7 +6713,6 @@ items:
         app.kubernetes.io/name: aws-ebs-csi-driver
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app: ebs-csi-node
           app.kubernetes.io/component: csi-driver
@@ -6694,7 +6933,6 @@ items:
         app.kubernetes.io/name: aws-ebs-csi-driver
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app: ebs-csi-node
           app.kubernetes.io/component: csi-driver
@@ -6902,7 +7140,7 @@ items:
       k8s-app: kube-proxy
     name: kube-proxy
     namespace: kube-system
-    resourceVersion: "1061316"
+    resourceVersion: "1113598"
     uid: e652b0c3-5ab9-43bd-8535-4fd69b7a3148
   spec:
     revisionHistoryLimit: 10
@@ -6911,7 +7149,6 @@ items:
         k8s-app: kube-proxy
     template:
       metadata:
-        creationTimestamp: null
         labels:
           k8s-app: kube-proxy
       spec:
@@ -7027,7 +7264,7 @@ items:
       app.kubernetes.io/part-of: bmi-health-check
     name: bmi-api
     namespace: bmi-api
-    resourceVersion: "1061539"
+    resourceVersion: "1111218"
     uid: 5422d82a-07ba-4b99-acbe-5128d3f55df7
   spec:
     progressDeadlineSeconds: 600
@@ -7043,7 +7280,6 @@ items:
       type: RollingUpdate
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app.kubernetes.io/name: bmi-api
       spec:
@@ -7164,8 +7400,8 @@ items:
       reason: NewReplicaSetAvailable
       status: "True"
       type: Progressing
-    - lastTransitionTime: "2026-10-08T04:28:44Z"
-      lastUpdateTime: "2026-10-08T04:28:44Z"
+    - lastTransitionTime: "2026-10-08T07:50:12Z"
+      lastUpdateTime: "2026-10-08T07:50:12Z"
       message: Deployment has minimum availability.
       reason: MinimumReplicasAvailable
       status: "True"
@@ -7173,6 +7409,7 @@ items:
     observedGeneration: 3
     readyReplicas: 2
     replicas: 2
+    terminatingReplicas: 0
     updatedReplicas: 2
 - apiVersion: apps/v1
   kind: Deployment
@@ -7193,7 +7430,7 @@ items:
       helm.sh/chart: cert-manager-v1.15.1
     name: cert-manager
     namespace: cert-manager
-    resourceVersion: "1060841"
+    resourceVersion: "1108675"
     uid: 166051a2-4843-4528-a80a-9dd3f369ac00
   spec:
     progressDeadlineSeconds: 600
@@ -7215,7 +7452,6 @@ items:
           prometheus.io/path: /metrics
           prometheus.io/port: "9402"
           prometheus.io/scrape: "true"
-        creationTimestamp: null
         labels:
           app: cert-manager
           app.kubernetes.io/component: controller
@@ -7289,8 +7525,8 @@ items:
       reason: NewReplicaSetAvailable
       status: "True"
       type: Progressing
-    - lastTransitionTime: "2026-10-08T04:26:49Z"
-      lastUpdateTime: "2026-10-08T04:26:49Z"
+    - lastTransitionTime: "2026-10-08T07:41:52Z"
+      lastUpdateTime: "2026-10-08T07:41:52Z"
       message: Deployment has minimum availability.
       reason: MinimumReplicasAvailable
       status: "True"
@@ -7298,6 +7534,7 @@ items:
     observedGeneration: 1
     readyReplicas: 1
     replicas: 1
+    terminatingReplicas: 0
     updatedReplicas: 1
 - apiVersion: apps/v1
   kind: Deployment
@@ -7318,7 +7555,7 @@ items:
       helm.sh/chart: cert-manager-v1.15.1
     name: cert-manager-cainjector
     namespace: cert-manager
-    resourceVersion: "1060699"
+    resourceVersion: "1112123"
     uid: 2c455d58-ac5f-4490-9834-5369edbb473b
   spec:
     progressDeadlineSeconds: 600
@@ -7336,7 +7573,6 @@ items:
       type: RollingUpdate
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app: cainjector
           app.kubernetes.io/component: cainjector
@@ -7390,8 +7626,8 @@ items:
       reason: NewReplicaSetAvailable
       status: "True"
       type: Progressing
-    - lastTransitionTime: "2026-10-08T04:26:32Z"
-      lastUpdateTime: "2026-10-08T04:26:32Z"
+    - lastTransitionTime: "2026-10-08T07:53:12Z"
+      lastUpdateTime: "2026-10-08T07:53:12Z"
       message: Deployment has minimum availability.
       reason: MinimumReplicasAvailable
       status: "True"
@@ -7399,6 +7635,7 @@ items:
     observedGeneration: 1
     readyReplicas: 1
     replicas: 1
+    terminatingReplicas: 0
     updatedReplicas: 1
 - apiVersion: apps/v1
   kind: Deployment
@@ -7419,7 +7656,7 @@ items:
       helm.sh/chart: cert-manager-v1.15.1
     name: cert-manager-webhook
     namespace: cert-manager
-    resourceVersion: "1061482"
+    resourceVersion: "1097433"
     uid: c93f1373-ca80-4f50-a270-f340e2fbbdfe
   spec:
     progressDeadlineSeconds: 600
@@ -7437,7 +7674,6 @@ items:
       type: RollingUpdate
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app: webhook
           app.kubernetes.io/component: webhook
@@ -7532,6 +7768,7 @@ items:
     observedGeneration: 1
     readyReplicas: 1
     replicas: 1
+    terminatingReplicas: 0
     updatedReplicas: 1
 - apiVersion: apps/v1
   kind: Deployment
@@ -7546,7 +7783,7 @@ items:
       kubernetes.io/name: CoreDNS
     name: coredns
     namespace: kube-system
-    resourceVersion: "1060635"
+    resourceVersion: "1110284"
     uid: df6a1739-0f7a-4335-a6d5-22cb12658e65
   spec:
     progressDeadlineSeconds: 600
@@ -7563,7 +7800,6 @@ items:
       type: RollingUpdate
     template:
       metadata:
-        creationTimestamp: null
         labels:
           eks.amazonaws.com/component: coredns
           k8s-app: kube-dns
@@ -7695,6 +7931,7 @@ items:
     observedGeneration: 1
     readyReplicas: 2
     replicas: 2
+    terminatingReplicas: 0
     updatedReplicas: 2
 - apiVersion: apps/v1
   kind: Deployment
@@ -7710,7 +7947,7 @@ items:
       app.kubernetes.io/version: 1.66.0
     name: ebs-csi-controller
     namespace: kube-system
-    resourceVersion: "1060781"
+    resourceVersion: "1113030"
     uid: 8c19d7f2-b999-4a17-9c41-b62a6223fa80
   spec:
     progressDeadlineSeconds: 600
@@ -7727,7 +7964,6 @@ items:
       type: RollingUpdate
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app: ebs-csi-controller
           app.kubernetes.io/component: csi-driver
@@ -8038,6 +8274,7 @@ items:
     observedGeneration: 1
     readyReplicas: 2
     replicas: 2
+    terminatingReplicas: 0
     updatedReplicas: 2
 - apiVersion: apps/v1
   kind: Deployment
@@ -8051,7 +8288,7 @@ items:
       control-plane: controller-manager
     name: opentelemetry-operator
     namespace: opentelemetry-operator-system
-    resourceVersion: "1060873"
+    resourceVersion: "1113001"
     uid: 4b19b9ba-ac27-40ca-8f77-6ada5a05dab5
   spec:
     progressDeadlineSeconds: 600
@@ -8070,7 +8307,6 @@ items:
       metadata:
         annotations:
           kubectl.kubernetes.io/default-container: manager
-        creationTimestamp: null
         labels:
           app.kubernetes.io/name: opentelemetry-operator
           control-plane: controller-manager
@@ -8174,8 +8410,8 @@ items:
       reason: NewReplicaSetAvailable
       status: "True"
       type: Progressing
-    - lastTransitionTime: "2026-10-08T04:26:56Z"
-      lastUpdateTime: "2026-10-08T04:26:56Z"
+    - lastTransitionTime: "2026-10-08T07:56:18Z"
+      lastUpdateTime: "2026-10-08T07:56:18Z"
       message: Deployment has minimum availability.
       reason: MinimumReplicasAvailable
       status: "True"
@@ -8183,6 +8419,7 @@ items:
     observedGeneration: 1
     readyReplicas: 1
     replicas: 1
+    terminatingReplicas: 0
     updatedReplicas: 1
 - apiVersion: apps/v1
   kind: ReplicaSet
@@ -8205,7 +8442,7 @@ items:
       kind: Deployment
       name: bmi-api
       uid: 5422d82a-07ba-4b99-acbe-5128d3f55df7
-    resourceVersion: "1061535"
+    resourceVersion: "1111217"
     uid: 640c830d-2530-4044-9ad2-27e55e0f1f3d
   spec:
     replicas: 2
@@ -8215,7 +8452,6 @@ items:
         pod-template-hash: 7595f6db74
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app.kubernetes.io/name: bmi-api
           pod-template-hash: 7595f6db74
@@ -8334,6 +8570,7 @@ items:
     observedGeneration: 3
     readyReplicas: 2
     replicas: 2
+    terminatingReplicas: 0
 - apiVersion: apps/v1
   kind: ReplicaSet
   metadata:
@@ -8363,7 +8600,7 @@ items:
       kind: Deployment
       name: cert-manager
       uid: 166051a2-4843-4528-a80a-9dd3f369ac00
-    resourceVersion: "1060840"
+    resourceVersion: "1108674"
     uid: e7a4bd9d-5351-4773-a980-ff730972efb5
   spec:
     replicas: 1
@@ -8379,7 +8616,6 @@ items:
           prometheus.io/path: /metrics
           prometheus.io/port: "9402"
           prometheus.io/scrape: "true"
-        creationTimestamp: null
         labels:
           app: cert-manager
           app.kubernetes.io/component: controller
@@ -8451,6 +8687,7 @@ items:
     observedGeneration: 1
     readyReplicas: 1
     replicas: 1
+    terminatingReplicas: 0
 - apiVersion: apps/v1
   kind: ReplicaSet
   metadata:
@@ -8480,7 +8717,7 @@ items:
       kind: Deployment
       name: cert-manager-cainjector
       uid: 2c455d58-ac5f-4490-9834-5369edbb473b
-    resourceVersion: "1060698"
+    resourceVersion: "1112122"
     uid: 66cb9364-2eed-4e07-a68c-27bfd673fe24
   spec:
     replicas: 1
@@ -8492,7 +8729,6 @@ items:
         pod-template-hash: 7f47fb946
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app: cainjector
           app.kubernetes.io/component: cainjector
@@ -8544,6 +8780,7 @@ items:
     observedGeneration: 1
     readyReplicas: 1
     replicas: 1
+    terminatingReplicas: 0
 - apiVersion: apps/v1
   kind: ReplicaSet
   metadata:
@@ -8573,7 +8810,7 @@ items:
       kind: Deployment
       name: cert-manager-webhook
       uid: c93f1373-ca80-4f50-a270-f340e2fbbdfe
-    resourceVersion: "1061480"
+    resourceVersion: "1097420"
     uid: 0c985735-4d6e-419b-814c-62229c1e94e2
   spec:
     replicas: 1
@@ -8585,7 +8822,6 @@ items:
         pod-template-hash: bbd99d8c6
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app: webhook
           app.kubernetes.io/component: webhook
@@ -8669,6 +8905,7 @@ items:
     observedGeneration: 1
     readyReplicas: 1
     replicas: 1
+    terminatingReplicas: 0
 - apiVersion: apps/v1
   kind: ReplicaSet
   metadata:
@@ -8691,7 +8928,7 @@ items:
       kind: Deployment
       name: coredns
       uid: df6a1739-0f7a-4335-a6d5-22cb12658e65
-    resourceVersion: "1060633"
+    resourceVersion: "1110283"
     uid: 26c9ad71-3311-4777-9f6a-09683ce80355
   spec:
     replicas: 2
@@ -8702,7 +8939,6 @@ items:
         pod-template-hash: 66dbb7bd9d
     template:
       metadata:
-        creationTimestamp: null
         labels:
           eks.amazonaws.com/component: coredns
           k8s-app: kube-dns
@@ -8823,6 +9059,7 @@ items:
     observedGeneration: 1
     readyReplicas: 2
     replicas: 2
+    terminatingReplicas: 0
 - apiVersion: apps/v1
   kind: ReplicaSet
   metadata:
@@ -8848,7 +9085,7 @@ items:
       kind: Deployment
       name: ebs-csi-controller
       uid: 8c19d7f2-b999-4a17-9c41-b62a6223fa80
-    resourceVersion: "1060780"
+    resourceVersion: "1113029"
     uid: d927af6d-94c4-40bb-93d1-bf1509d3bccd
   spec:
     replicas: 2
@@ -8859,7 +9096,6 @@ items:
         pod-template-hash: 6cd47c6cd
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app: ebs-csi-controller
           app.kubernetes.io/component: csi-driver
@@ -9159,6 +9395,7 @@ items:
     observedGeneration: 1
     readyReplicas: 2
     replicas: 2
+    terminatingReplicas: 0
 - apiVersion: apps/v1
   kind: ReplicaSet
   metadata:
@@ -9181,7 +9418,7 @@ items:
       kind: Deployment
       name: opentelemetry-operator
       uid: 4b19b9ba-ac27-40ca-8f77-6ada5a05dab5
-    resourceVersion: "1060869"
+    resourceVersion: "1112998"
     uid: fb531759-3e91-49b2-899d-459a1b587aeb
   spec:
     replicas: 1
@@ -9194,7 +9431,6 @@ items:
       metadata:
         annotations:
           kubectl.kubernetes.io/default-container: manager
-        creationTimestamp: null
         labels:
           app.kubernetes.io/name: opentelemetry-operator
           control-plane: controller-manager
@@ -9296,6 +9532,7 @@ items:
     observedGeneration: 1
     readyReplicas: 1
     replicas: 1
+    terminatingReplicas: 0
 - apiVersion: apps/v1
   kind: StatefulSet
   metadata:
@@ -9309,7 +9546,7 @@ items:
       app.kubernetes.io/part-of: bmi-health-check
     name: bmi-db
     namespace: bmi-api
-    resourceVersion: "1001607"
+    resourceVersion: "1095938"
     uid: 8c44ba51-081d-4b86-8e1c-97451bea6bdb
   spec:
     persistentVolumeClaimRetentionPolicy:
@@ -9324,7 +9561,6 @@ items:
     serviceName: bmi-db
     template:
       metadata:
-        creationTimestamp: null
         labels:
           app.kubernetes.io/name: bmi-db
       spec:
@@ -9390,7 +9626,6 @@ items:
     - apiVersion: v1
       kind: PersistentVolumeClaim
       metadata:
-        creationTimestamp: null
         name: data
       spec:
         accessModes:
@@ -9403,11 +9638,12 @@ items:
       status:
         phase: Pending
   status:
-    availableReplicas: 0
+    availableReplicas: 1
     collisionCount: 0
     currentReplicas: 1
     currentRevision: bmi-db-d9b9f57dd
     observedGeneration: 1
+    readyReplicas: 1
     replicas: 1
     updateRevision: bmi-db-d9b9f57dd
     updatedReplicas: 1
